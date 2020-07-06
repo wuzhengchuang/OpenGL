@@ -14,13 +14,15 @@ GLBatch triangleBatch;
 
 GLShaderManager shaderManager;
 
-GLfloat blockSize = 0.1f;
+GLfloat blockSize = 0.02f;
 GLfloat vVerts[] = {
     -blockSize,-blockSize,0.0f,
     blockSize,-blockSize,0.0f,
     blockSize,blockSize,0.0f,
     -blockSize,blockSize,0.0f,
 };
+GLfloat offSetX = 0;
+GLfloat offSetY = 0;
 //窗口大小改变时接受新的宽度和高度，其中0,0代表窗口中视口的左下角坐标，w，h代表像素
 void ChangeSize(int w,int h) {
     printf("%d,%d\n",w,h);
@@ -41,21 +43,75 @@ void SetupRC() {
 //开始渲染
 void RenderScene(void) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+    M3DMatrix44f mTransfromMatrix;
+    m3dTranslationMatrix44(mTransfromMatrix, offSetX, offSetY, 0);
     GLfloat vRed[] = {1,0,0,1};
-    shaderManager.UseStockShader(GLT_SHADER_IDENTITY,vRed);
+    shaderManager.UseStockShader(GLT_SHADER_FLAT,mTransfromMatrix,vRed);
+//    shaderManager.UseStockShader(GLT_SHADER_IDENTITY,vRed);
+    glTranslated(offSetX, offSetY, 0);
     triangleBatch.Draw();
     glutSwapBuffers();
+}
+void SpecialKeysOffSet(unsigned char key,int x,int y){
+    //根据相对顶点D，计算出ABCD每个顶点坐标值
+    GLfloat stepSize = 0.05f;
+    GLfloat blockX = vVerts[9];
+    GLfloat blockY = vVerts[10];
+    switch (key) {
+        case 'w'://上
+            {
+                offSetY+=stepSize;
+                offSetY=((blockY+offSetY)>1.0?(1.0-blockY):offSetY);
+            }
+            break;
+        case 's'://下
+            {
+                offSetY-=stepSize;
+                offSetY=((blockY+offSetY-blockSize*2)<-1.0?-1.0-blockY+blockSize*2:offSetY);
+            }
+            break;
+        case 'a'://左a
+            {
+                offSetX-=stepSize;
+                offSetX = ((blockX+offSetX)<-1.0?-blockX-1.0:offSetX);
+            }
+        break;
+        case 'd'://右
+            {
+                offSetX+=stepSize;
+                offSetX = ((blockX+blockSize*2+offSetX)>1.0?1.0-blockSize*2-blockX:offSetX);
+            }
+        break;
+        default:
+            break;
+    }
+    
+//    vVerts[0]=blockX;
+//    vVerts[1]=blockY-blockSize*2;
+//
+//    vVerts[3]=blockX+blockSize*2;
+//    vVerts[4]=blockY-blockSize*2;
+//
+//    vVerts[6]=blockX+blockSize*2;
+//    vVerts[7]=blockY;
+//
+//    vVerts[9]=blockX;
+//    vVerts[10]=blockY;
+    triangleBatch.CopyVertexData3f(vVerts);
+    glutPostRedisplay();
 }
 void SpecialKeys(unsigned char key,int x,int y){
     //根据相对顶点D，计算出ABCD每个顶点坐标值
     GLfloat stepSize = 0.025f;
     GLfloat blockX = vVerts[9];
     GLfloat blockY = vVerts[10];
+    
     switch (key) {
         case 'w'://上
             {
                 blockY+=stepSize;
                 blockY = (blockY>1.0?1.0:blockY);
+                
             }
             break;
         case 's'://下
@@ -115,7 +171,7 @@ int main(int argc,char* argv[]) {
     //注册回调函数
     glutReshapeFunc(ChangeSize);
     glutDisplayFunc(RenderScene);
-    glutKeyboardFunc(SpecialKeys);
+    glutKeyboardFunc(SpecialKeysOffSet);
 //    glutWMCloseFunc(CloseWindow);
     //驱动程序的初始化中没有出现任何问题。
     GLenum err = glewInit();
