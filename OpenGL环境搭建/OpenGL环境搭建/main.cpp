@@ -26,14 +26,12 @@ GLfloat offSetY = 0;
 //窗口大小改变时接受新的宽度和高度，其中0,0代表窗口中视口的左下角坐标，w，h代表像素
 void ChangeSize(int w,int h) {
     printf("%d,%d\n",w,h);
-    glViewport(0, 0, w, h);
+    glViewport(0, 0, w*2, h*2);
 }
 
 //为程序作一次性的设置
 void SetupRC() {
     glClearColor(0, 1, 1, 1);
-    
-    
     shaderManager.InitializeStockShaders();
     triangleBatch.Begin(GL_TRIANGLE_FAN, 4);
     triangleBatch.CopyVertexData3f(vVerts);
