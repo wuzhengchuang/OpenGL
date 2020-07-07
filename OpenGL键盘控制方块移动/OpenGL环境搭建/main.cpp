@@ -95,7 +95,7 @@ void SpecialKeysOffSet(unsigned char key,int x,int y){
 //
 //    vVerts[9]=blockX;
 //    vVerts[10]=blockY;
-    triangleBatch.CopyVertexData3f(vVerts);
+//    triangleBatch.CopyVertexData3f(vVerts);
     glutPostRedisplay();
 }
 void SpecialKeys(unsigned char key,int x,int y){
