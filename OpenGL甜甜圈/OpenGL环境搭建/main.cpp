@@ -49,8 +49,14 @@ void RenderScene(void) {
         glEnable(GL_CULL_FACE);
         glFrontFace(GL_CCW);
         glCullFace(GL_BACK);
+        glEnable(GL_DEPTH_TEST);
     }else{
         glDisable(GL_CULL_FACE);
+    }
+    if (iDepth) {
+        glEnable(GL_DEPTH_TEST);
+    }else{
+        glDisable(GL_DEPTH_TEST);
     }
     modelViewMatrix.PushMatrix(objectFrame);
     GLfloat vRed[] = {1.0f,0.0f,0.0f,1.0f};
@@ -91,13 +97,13 @@ void ProcessMenu(int index){
             iCull = !iCull;
             break;
         case 3:
-            
+            glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
             break;
         case 4:
-            
+            glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
             break;
         case 5:
-            
+            glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
             break;
         default:
             break;
