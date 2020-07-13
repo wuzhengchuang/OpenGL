@@ -33,7 +33,7 @@ void ChangeSize(int w,int h) {
 
 //为程序作一次性的设置
 void SetupRC() {
-    glClearColor(0, 1, 1, 1);
+    glClearColor(1, 1, 1, 1);
     shaderManager.InitializeStockShaders();
     triangleBatch.Begin(GL_TRIANGLE_FAN, 4);
     triangleBatch.CopyVertexData3f(centerVerts);
@@ -44,6 +44,7 @@ void SetupRC() {
 void RenderScene(void) {
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT|GL_STENCIL_BUFFER_BIT);
     glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     M3DMatrix44f matrix;
     m3dTranslationMatrix44(matrix, offX, offY, 0);
     GLfloat vRed[] = {1,0,0,0.5};
