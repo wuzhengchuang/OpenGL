@@ -47,7 +47,7 @@ void RenderScene(void) {
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     M3DMatrix44f matrix;
     m3dTranslationMatrix44(matrix, offX, offY, 0);
-    GLfloat vRed[] = {1,0,0,0.5};
+    GLfloat vRed[] = {1,0,0,1.0};
     shaderManager.UseStockShader(GLT_SHADER_FLAT,matrix,vRed);
     glTranslated(offX, offY, 0);
     triangleBatch.Draw();
@@ -75,7 +75,7 @@ void RenderScene(void) {
     
     M3DMatrix44f bottomLeft;
     m3dTranslationMatrix44(bottomLeft, -0.5, -0.5, 0);
-    GLfloat vOther1[] = {0.3,0.1,0.2,0.5};
+    GLfloat vOther1[] = {1,0,0,0.5};
     shaderManager.UseStockShader(GLT_SHADER_FLAT,bottomLeft,vOther1);
     glTranslated(-0.5, -0.5, 0);
     triangleBatch.Draw();
