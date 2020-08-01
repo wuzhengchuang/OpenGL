@@ -18,6 +18,7 @@
 		2D901B9924D17FE500D93DBB /* OpenGL_ES_Test1UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D901B9824D17FE500D93DBB /* OpenGL_ES_Test1UITests.m */; };
 		2D901BA824D1800B00D93DBB /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D901BA724D1800B00D93DBB /* OpenGLES.framework */; };
 		2D901BAA24D1801400D93DBB /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D901BA924D1801400D93DBB /* GLKit.framework */; };
+		2DDC3F7624D1C3EB007A308C /* meinv.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2DDC3F7524D1C3EA007A308C /* meinv.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		2D901B9A24D17FE500D93DBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D901BA724D1800B00D93DBB /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		2D901BA924D1801400D93DBB /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		2DDC3F7524D1C3EA007A308C /* meinv.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = meinv.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 		2D901B7024D17FE400D93DBB /* OpenGL ES Test1 */ = {
 			isa = PBXGroup;
 			children = (
+				2DDC3F7524D1C3EA007A308C /* meinv.jpeg */,
 				2D901B7124D17FE400D93DBB /* AppDelegate.h */,
 				2D901B7224D17FE400D93DBB /* AppDelegate.m */,
 				2D901B7424D17FE400D93DBB /* SceneDelegate.h */,
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D901B8124D17FE500D93DBB /* LaunchScreen.storyboard in Resources */,
+				2DDC3F7624D1C3EB007A308C /* meinv.jpeg in Resources */,
 				2D901B7E24D17FE500D93DBB /* Assets.xcassets in Resources */,
 				2D901B7C24D17FE400D93DBB /* Main.storyboard in Resources */,
 			);

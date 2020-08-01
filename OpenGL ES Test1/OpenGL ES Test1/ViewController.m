@@ -21,7 +21,7 @@
     [super viewDidLoad];
     [self setUpConfig];
     [self setUpVertexData];
-    
+    [self setUpTexure];
 }
 -(void)setUpConfig{
     context=[[EAGLContext alloc]initWithAPI:kEAGLRenderingAPIOpenGLES3];
@@ -56,11 +56,18 @@
     glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, false, sizeof(GLfloat)*5, (GLfloat *)NULL +3);
 }
 -(void)setUpTexure{
-    
+   NSString *path = [[NSBundle mainBundle]pathForResource:@"meinv" ofType:@"jpeg"];
+    NSDictionary *options=[NSDictionary dictionaryWithObjectsAndKeys:@(1),GLKTextureLoaderOriginBottomLeft, nil];
+    GLKTextureInfo *texture=[GLKTextureLoader textureWithContentsOfFile:path options:options error:nil ];
+    effect=[[GLKBaseEffect alloc]init];
+    effect.texture2d0.enabled=GL_TRUE;
+    effect.texture2d0.name=texture.name;
 }
 #pragma mark
 -(void)glkView:(GLKView *)view drawInRect:(CGRect)rect{
     glClear(GL_COLOR_BUFFER_BIT);
+    [effect prepareToDraw];
+    glDrawArrays(GL_TRIANGLES, 0, 6);
 }
 
 @end
