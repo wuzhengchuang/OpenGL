@@ -7,16 +7,16 @@
 //
 
 #import "WZCViewController.h"
-
+#import "WZCView.h"
 @interface WZCViewController ()
-
+@property(nonatomic,strong)WZCView *wzcView;
 @end
 
 @implementation WZCViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.wzcView=(WZCView *)self.view;
 }
 
 /*
