@@ -23,9 +23,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    glCompileShader(<#GLuint shader#>)
-    glCreateProgram()
-    glDeleteProgram(<#GLuint program#>)
+//    glCompileShader(<#GLuint shader#>)
+//    glCreateProgram()
+//    glDeleteProgram(<#GLuint program#>)
     
 /*
  glCreateShader(<#GLenum type#>);
@@ -84,7 +84,7 @@
  
  glUseProgram(GLuint program)
  */
-glUseProgram(GLuint program)
+//glUseProgram(GLuint program)
 }
 
 
