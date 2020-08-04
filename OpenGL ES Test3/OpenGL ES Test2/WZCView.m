@@ -133,11 +133,13 @@
     size_t height =CGImageGetHeight(spriteImage);
     GLubyte *spriteData = (GLubyte *)calloc(width*height*4, sizeof(GLubyte));
     CGContextRef spriteContext = CGBitmapContextCreate(spriteData, width, height, 8, width*4, CGImageGetColorSpace(spriteImage), kCGImageAlphaPremultipliedLast);
-    //翻转图片
-//    CGContextTranslateCTM(spriteContext, 0, height);
-//    CGContextScaleCTM(spriteContext, 1, -1);
     
     CGRect rect = CGRectMake(0, 0, width, height);
+    //翻转图片
+    CGContextTranslateCTM(spriteContext, rect.origin.x, rect.origin.y);
+    CGContextTranslateCTM(spriteContext, 0, height);
+    CGContextScaleCTM(spriteContext, 1, -1);
+    CGContextTranslateCTM(spriteContext, -1.0*rect.origin.x, -1.0*rect.origin.y);
     CGContextDrawImage(spriteContext, rect, spriteImage);
     CGContextRelease(spriteContext);
     
