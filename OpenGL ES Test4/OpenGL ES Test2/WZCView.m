@@ -107,6 +107,7 @@
     //11.
     GLint location = glGetUniformLocation(self.myPrograme, "colorMap");
     glUniform1i(location, 0);
+    [self rotateTextureImage];
     //12.
     glDrawArrays(GL_TRIANGLES, 0, 6);
     //13
@@ -244,5 +245,18 @@
     glShaderSource(*shader, 1, &source, NULL);
     //4.编译
     glCompileShader(*shader);
+}
+-(void)rotateTextureImage{
+    GLuint rotate = glGetUniformLocation(self.myPrograme, "rotateMatrix");
+    float radians=180*3.14159f/180.f;
+    float s=sin(radians);
+    float c=cos(radians);
+    GLfloat zRoattion[16]={
+        c,-s,0,0,
+        s,c,0,0,
+        0,0,1,0,
+        0,0,0,1
+    };
+    glUniformMatrix4fv(rotate, 1, GL_FALSE, zRoattion);
 }
 @end
