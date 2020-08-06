@@ -22,6 +22,7 @@
 		2D0F212524D96116005FFFDB /* GLESUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0F211F24D96116005FFFDB /* GLESUtils.m */; };
 		2D0F212624D96116005FFFDB /* GLESMath.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D0F212124D96116005FFFDB /* GLESMath.c */; };
 		2D0F212C24D96229005FFFDB /* UIColor+RGBA.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0F212B24D96229005FFFDB /* UIColor+RGBA.m */; };
+		2D53B60524DBD408000189CB /* timg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2D53B60424DBD408000189CB /* timg.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		2D0F212424D96116005FFFDB /* GLESMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLESMath.h; sourceTree = "<group>"; };
 		2D0F212A24D96229005FFFDB /* UIColor+RGBA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+RGBA.h"; sourceTree = "<group>"; };
 		2D0F212B24D96229005FFFDB /* UIColor+RGBA.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RGBA.m"; sourceTree = "<group>"; };
+		2D53B60424DBD408000189CB /* timg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = timg.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 		2D0F20D924D94B3C005FFFDB /* OpenGL ES 索引绘图 */ = {
 			isa = PBXGroup;
 			children = (
+				2D53B60424DBD408000189CB /* timg.jpeg */,
 				2D0F211E24D96116005FFFDB /* Utils */,
 				2D0F211D24D960F7005FFFDB /* tools */,
 				2D0F20DA24D94B3C005FFFDB /* AppDelegate.h */,
@@ -288,6 +291,7 @@
 			files = (
 				2D0F211824D956E9005FFFDB /* sharderv.glsl in Resources */,
 				2D0F20EA24D94B3E005FFFDB /* LaunchScreen.storyboard in Resources */,
+				2D53B60524DBD408000189CB /* timg.jpeg in Resources */,
 				2D0F20E724D94B3E005FFFDB /* Assets.xcassets in Resources */,
 				2D0F211A24D9570B005FFFDB /* sharderf.glsl in Resources */,
 				2D0F20E524D94B3C005FFFDB /* Main.storyboard in Resources */,

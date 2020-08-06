@@ -11,6 +11,7 @@
 @interface WZCViewController ()
 @property(nonatomic,strong)EAGLContext *eaglContext;
 @property(nonatomic,strong)GLKBaseEffect *effect;
+@property(nonatomic,strong)GLKTextureInfo *textureInfo;
 @property(nonatomic,assign)float xDegree;
 @property(nonatomic,assign)float yDegree;
 @property(nonatomic,assign)float zDegree;
@@ -53,6 +54,13 @@
         0.5f,-0.5f,0.0f,   1.0f,1.0f,1.0f,
         0.f,0.f,1.0f,      0.0f,1.0f,0.0f,
     };
+    GLfloat textCoods[]={
+        0.0,1.0,
+        1.0,1.0,
+        1.0,0.0,
+        0.0,0.0,
+        0.5,0.5
+    };
     GLuint indices[]={
         0,3,2,
         0,1,3,
@@ -66,17 +74,27 @@
     glGenBuffers(1, &buffer);
     glBindBuffer(GL_ARRAY_BUFFER, buffer);
     glBufferData(GL_ARRAY_BUFFER, sizeof(verts), verts, GL_DYNAMIC_DRAW);
+    glEnableVertexAttribArray(GLKVertexAttribPosition);
+    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*6, NULL);
+    glEnableVertexAttribArray(GLKVertexAttribColor);
+    glVertexAttribPointer(GLKVertexAttribColor, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*6, (GLfloat *)NULL+3);
     
     GLuint index;
     glGenBuffers(1, &index);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, index);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_DYNAMIC_DRAW);
+
     
-    glEnableVertexAttribArray(GLKVertexAttribPosition);
-    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*6, NULL);
-    glEnableVertexAttribArray(GLKVertexAttribColor);
-    glVertexAttribPointer(GLKVertexAttribColor, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*6, (GLfloat *)NULL+3);
+    GLuint textBuffer;
+       glGenBuffers(1, &textBuffer);
+       glBindBuffer(GL_ARRAY_BUFFER, textBuffer);
+       glBufferData(GL_ARRAY_BUFFER, sizeof(textCoods), textCoods, GL_DYNAMIC_DRAW);
+    glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
+    glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*2, (GLfloat *)NULL);
+    NSString *path=[[NSBundle mainBundle]pathForResource:@"timg" ofType:@"jpeg"];
+    self.textureInfo=[GLKTextureLoader textureWithContentsOfFile:path options:@{GLKTextureLoaderOriginBottomLeft:@1} error:NULL];
     self.effect=[[GLKBaseEffect alloc]init];
+    self.effect.texture2d0.name=self.textureInfo.name;
     CGSize size = self.view.bounds.size;
     float aspect = fabsf(size.width/size.height);
     GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(90.0), aspect, 0.1, 100.f);
