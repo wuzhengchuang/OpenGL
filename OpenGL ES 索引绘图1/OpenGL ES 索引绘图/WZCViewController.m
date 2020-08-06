@@ -57,8 +57,8 @@
     GLfloat textCoods[]={
         0.0,1.0,
         1.0,1.0,
-        1.0,0.0,
         0.0,0.0,
+        1.0,0.0,
         0.5,0.5
     };
     GLuint indices[]={
@@ -91,9 +91,12 @@
        glBufferData(GL_ARRAY_BUFFER, sizeof(textCoods), textCoods, GL_DYNAMIC_DRAW);
     glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
     glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*2, (GLfloat *)NULL);
+    
     NSString *path=[[NSBundle mainBundle]pathForResource:@"timg" ofType:@"jpeg"];
     self.textureInfo=[GLKTextureLoader textureWithContentsOfFile:path options:@{GLKTextureLoaderOriginBottomLeft:@1} error:NULL];
+    
     self.effect=[[GLKBaseEffect alloc]init];
+    self.effect.texture2d0.enabled=GL_TRUE;
     self.effect.texture2d0.name=self.textureInfo.name;
     CGSize size = self.view.bounds.size;
     float aspect = fabsf(size.width/size.height);

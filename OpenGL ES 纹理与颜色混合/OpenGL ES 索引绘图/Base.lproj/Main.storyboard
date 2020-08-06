@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="WZCViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="EAGLView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lR9-FL-8UR">
+                                <rect key="frame" x="10" y="818" width="124.5" height="34"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" red="0.94117647059999998" green="0.2901960784" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="XClick:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="gSf-xq-v2m"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gsx-rI-gMQ">
+                                <rect key="frame" x="144.5" y="818" width="125" height="34"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Y">
+                                    <color key="titleColor" red="0.94117647059999998" green="0.2901960784" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="YClick:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="1pW-Vc-jrw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ONU-im-x8h">
+                                <rect key="frame" x="279.5" y="818" width="124.5" height="34"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Z">
+                                    <color key="titleColor" red="0.94117647059999998" green="0.2901960784" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="ZClick:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="OHP-eJ-Utk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Gsx-rI-gMQ" firstAttribute="width" secondItem="lR9-FL-8UR" secondAttribute="width" id="0zD-fy-zJb"/>
+                            <constraint firstItem="BMR-yZ-6rK" firstAttribute="trailing" secondItem="ONU-im-x8h" secondAttribute="trailing" constant="10" id="4vI-Ug-SmN"/>
+                            <constraint firstItem="ONU-im-x8h" firstAttribute="centerY" secondItem="lR9-FL-8UR" secondAttribute="centerY" id="8HF-vz-HO6"/>
+                            <constraint firstItem="lR9-FL-8UR" firstAttribute="leading" secondItem="BMR-yZ-6rK" secondAttribute="leading" constant="10" id="JGQ-Us-wfb"/>
+                            <constraint firstItem="ONU-im-x8h" firstAttribute="width" secondItem="lR9-FL-8UR" secondAttribute="width" id="bom-7e-eAs"/>
+                            <constraint firstItem="Gsx-rI-gMQ" firstAttribute="leading" secondItem="lR9-FL-8UR" secondAttribute="trailing" constant="10" id="csO-F1-sso"/>
+                            <constraint firstItem="ONU-im-x8h" firstAttribute="leading" secondItem="Gsx-rI-gMQ" secondAttribute="trailing" constant="10" id="fWU-at-Ija"/>
+                            <constraint firstItem="Gsx-rI-gMQ" firstAttribute="centerY" secondItem="lR9-FL-8UR" secondAttribute="centerY" id="hTS-su-ZqY"/>
+                            <constraint firstItem="BMR-yZ-6rK" firstAttribute="bottom" secondItem="lR9-FL-8UR" secondAttribute="bottom" constant="10" id="kWO-rr-3C6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BMR-yZ-6rK"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="138"/>
+        </scene>
+    </scenes>
+</document>
