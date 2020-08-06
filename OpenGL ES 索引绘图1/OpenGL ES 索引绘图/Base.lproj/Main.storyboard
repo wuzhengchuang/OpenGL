@@ -23,7 +23,7 @@
                                     <color key="titleColor" red="0.94117647059999998" green="0.2901960784" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="XClick:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="gSf-xq-v2m"/>
+                                    <action selector="XClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IR5-Dg-nh3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gsx-rI-gMQ">
@@ -33,7 +33,7 @@
                                     <color key="titleColor" red="0.94117647059999998" green="0.2901960784" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="YClick:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="1pW-Vc-jrw"/>
+                                    <action selector="YClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="akM-Sh-SRS"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ONU-im-x8h">
@@ -44,7 +44,7 @@
                                     <color key="titleColor" red="0.94117647059999998" green="0.2901960784" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="ZClick:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="OHP-eJ-Utk"/>
+                                    <action selector="ZClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="khY-2T-YKw"/>
                                 </connections>
                             </button>
                         </subviews>
