@@ -8,7 +8,6 @@
 #import <OpenGLES/ES2/gl.h>
 #import <OpenGLES/ES2/glext.h>
 #import "EAGLView.h"
-#import "UIColor+RGBA.h"
 #import "GLESMath.h"
 @interface EAGLView ()
 {
@@ -38,13 +37,7 @@
     [self render];
 }
 -(void)render{
-    RGBA rgba;
-    rgba.red=0.0;
-    rgba.green=0.0;
-    rgba.blue=0.0;
-    rgba.alpa=1.0;
-//    UIColorToRGBA(self.backgroundColor, &rgba);
-    glClearColor(rgba.red, rgba.green, rgba.blue, rgba.alpa);
+    glClearColor(0, 0, 0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     CGFloat scale = [[UIScreen mainScreen]scale];
     CGRect rect = self.frame;

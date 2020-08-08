@@ -8,7 +8,6 @@
 #import <OpenGLES/ES2/gl.h>
 #import <OpenGLES/ES2/glext.h>
 #import "EAGLView.h"
-#import "UIColor+RGBA.h"
 #import "GLESMath.h"
 @interface EAGLView ()
 {
@@ -38,14 +37,8 @@
     [self render];
 }
 -(void)render{
-    RGBA rgba;
-    rgba.red=0.0;
-    rgba.green=0.0;
-    rgba.blue=0.0;
-    rgba.alpa=1.0;
-//    UIColorToRGBA(self.backgroundColor, &rgba);
-    glClearColor(rgba.red, rgba.green, rgba.blue, rgba.alpa);
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClearColor(0, 0, 0, 1.0);
+    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
     CGFloat scale = [[UIScreen mainScreen]scale];
     CGRect rect = self.frame;
     glViewport(rect.origin.x*scale, rect.origin.y*scale, rect.size.width*scale, rect.size.height*scale);
@@ -66,12 +59,13 @@
     glUseProgram(self.program);
 
     GLfloat verts[]={
-        -0.5f,0.5f,0.0f,   1.0f,0.0f,1.0f,
-        0.5f,0.5f,0.0f,    1.0f,0.0f,1.0f,
-        -0.5f,-0.5f,0.0f,  1.0f,1.0f,1.0f,
-        0.5f,-0.5f,0.0f,   1.0f,1.0f,1.0f,
-        0.f,0.f,1.0f,      0.0f,1.0f,0.0f,
+        -0.5f,0.5f,0.0f,   1.0f,0.0f,1.0f,   0.f,1.f,
+        0.5f,0.5f,0.0f,    1.0f,0.0f,1.0f,   1.f,1.f,
+        -0.5f,-0.5f,0.0f,  1.0f,1.0f,1.0f,   0.f,0.f,
+        0.5f,-0.5f,0.0f,   1.0f,1.0f,1.0f,   1.f,0.f,
+        0.f,0.f,1.0f,      0.0f,1.0f,0.0f,   0.5,0.5,
     };
+    
     GLuint indices[]={
         0,3,2,
         0,1,3,
@@ -89,11 +83,22 @@
 
     GLint position = glGetAttribLocation(self.program, "position");
     glEnableVertexAttribArray(position);
-    glVertexAttribPointer(position, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*6, (GLfloat *)NULL);
+    glVertexAttribPointer(position, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*8, (GLfloat *)NULL);
 
     GLint positionColor = glGetAttribLocation(self.program, "positionColor");
     glEnableVertexAttribArray(positionColor);
-    glVertexAttribPointer(positionColor, 3, GL_FLOAT, false, sizeof(GLfloat)*6, (GLfloat *)NULL+3);
+    glVertexAttribPointer(positionColor, 3, GL_FLOAT, false, sizeof(GLfloat)*8, (GLfloat *)NULL+3);
+    
+    GLint textCoord = glGetAttribLocation(self.program, "textCoord");
+    glEnableVertexAttribArray(textCoord);
+    glVertexAttribPointer(textCoord, 2, GL_FLOAT, false, sizeof(GLfloat)*8, (GLfloat *)NULL+6);
+    
+    [self setUpTexture:@"timg.jpeg"];
+    
+    GLint alpha = glGetUniformLocation(self.program, "alpha");
+    glUniform1f(alpha, 0.5);
+    GLint colorMap = glGetUniformLocation(self.program, "colorMap");
+    glUniform1i(colorMap, 0);
     //mvp
 
     GLint projectionMatrix = glGetUniformLocation(self.program, "projectionMatrix");
@@ -121,6 +126,7 @@
     ksMatrixMultiply(&_modelViewMatrix, &_rotationMatrix, &_modelViewMatrix);
     glUniformMatrix4fv(modelViewMatrix, 1, GL_FALSE, (GLfloat *)&_modelViewMatrix.m[0][0]);
     glEnable(GL_CULL_FACE);
+    glEnable(GL_DEPTH_TEST);
     //索引绘图
     glDrawElements(GL_TRIANGLES, sizeof(indices)/sizeof(indices[0]), GL_UNSIGNED_INT,indices);
     [self.eaglContext presentRenderbuffer:GL_RENDERBUFFER];
@@ -224,5 +230,50 @@
     //重新渲染
     [self render];
     
+}
+-(GLuint)setUpTexture:(NSString *)fileName{
+    //1.纹理解压缩
+    CGImageRef spriteImage = [UIImage imageNamed:fileName].CGImage;
+    if (!spriteImage) {
+        NSLog(@"Failed to load image ~");
+        exit(1);
+    }
+    //2.
+    /*
+     参数1：data，指向要渲染的绘制图像的内存地址
+     参数2：width，bitmap的宽度，单位为像素
+     参数3：height,bitmap的宽度，单位为像素
+     参数4：bitPerComponent,内存中像素的每个组件的位数，比如32位RGBA，就设置为8
+     参数5：bytesPerRow，bitmap的每一行的内存所占的比特数
+     参数6：colorSpace，bitmap上使用的颜色空间 kCGImageAlphaPremultipliedLast:RGBA
+     */
+    
+    size_t width= CGImageGetWidth(spriteImage);
+    size_t height =CGImageGetHeight(spriteImage);
+    GLubyte *spriteData = (GLubyte *)calloc(width*height*4, sizeof(GLubyte));
+    CGContextRef spriteContext = CGBitmapContextCreate(spriteData, width, height, 8, width*4, CGImageGetColorSpace(spriteImage), kCGImageAlphaPremultipliedLast);
+    
+    CGRect rect = CGRectMake(0, 0, width, height);
+    //翻转图片
+    CGContextTranslateCTM(spriteContext, rect.origin.x, rect.origin.y);
+    CGContextTranslateCTM(spriteContext, 0, height);
+    CGContextScaleCTM(spriteContext, 1, -1);
+    CGContextTranslateCTM(spriteContext, -1.0*rect.origin.x, -1.0*rect.origin.y);
+    CGContextDrawImage(spriteContext, rect, spriteImage);
+    CGContextRelease(spriteContext);
+    
+    //纹理
+//    glGenTextures(1, 0);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, 0);
+    //设置纹理属性
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    float fw=width,fh=height;
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, fw, fh, 0, GL_RGBA, GL_UNSIGNED_BYTE, spriteData);
+    free(spriteData);
+    return 0;
 }
 @end
