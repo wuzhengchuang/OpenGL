@@ -7,13 +7,19 @@
 //
 
 #import "EAGLView.h"
+#import <GLKit/GLKit.h>
 #import <OpenGLES/ES2/gl.h>
 #import <OpenGLES/ES2/glext.h>
+typedef struct {
+    GLKVector3 position;
+    GLKVector2 textureCoord;
+}ScnceVertex;
 @interface EAGLView ()
 @property(nonatomic,strong)CAEAGLLayer *eagLayer;
 @property(nonatomic,strong)EAGLContext *eaglContext;
 @property(nonatomic,assign)GLuint colorRenderBuffer;
 @property(nonatomic,assign)GLuint colorFrameBuffer;
+@property(nonatomic,assign)GLuint program;
 @end
 @implementation EAGLView
 - (void)layoutSubviews{
@@ -33,7 +39,65 @@
     CGFloat scale = [[UIScreen mainScreen]scale];
     CGRect rect = self.frame;
     glViewport(rect.origin.x*scale, rect.origin.y*scale, rect.size.width*scale, rect.size.height*scale);
+    NSString *vertPath = [[NSBundle mainBundle]pathForResource:@"Shaders" ofType:@"vsh"];
+    NSString *fragPath = [[NSBundle mainBundle]pathForResource:@"Shaderf" ofType:@"fsh"];
+    self.program = [self loadShaders:vertPath frag:fragPath];
+    
+    ScnceVertex verts[]={
+        {{-1.f,1.f,0.0f,},{0.f,1.f,}},
+        {{-1.f,-1.f,0.0f,},{0.f,0.f,}},
+        {{1.f,1.f,0.0f,},{1.f,1.f,}},
+        {{1.f,-1.f,0.0f,},{1.f,0.f,}},
+    };
+    GLuint buffer;
+    glGenBuffers(1, &buffer);
+    glBindBuffer(GL_ARRAY_BUFFER, buffer);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(verts), verts, GL_DYNAMIC_DRAW);
+    
+    
+    GLuint position = glGetAttribLocation(self.program, "position");
+    glEnableVertexAttribArray(position);
+    glVertexAttribPointer(position, 3, GL_FLOAT, GL_FALSE, sizeof(ScnceVertex), NULL + offsetof(ScnceVertex, position));
+    
+    GLuint textCoord = glGetAttribLocation(self.program, "textCoord");
+    glEnableVertexAttribArray(textCoord);
+    glVertexAttribPointer(textCoord, 2, GL_FLOAT, GL_FALSE, sizeof(ScnceVertex),NULL + offsetof(ScnceVertex, textureCoord));
+    
+    [self setUpTexture:@"timg.jpeg"];
+    GLuint colorMap = glGetUniformLocation(self.program, "colorMap");
+    glUniform1i(colorMap, 0);
+    glEnable(GL_DEPTH_TEST);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     [self.eaglContext presentRenderbuffer:GL_RENDERBUFFER];
+}
+-(GLuint)setUpTexture:(NSString *)imageName{
+    CGImageRef spriteImage = [UIImage imageNamed:imageName].CGImage;
+    size_t width = CGImageGetWidth(spriteImage);
+    size_t height = CGImageGetHeight(spriteImage);
+    GLubyte *spriteData = calloc(width*height*4, sizeof(GLubyte));
+    CGContextRef spriteContext = CGBitmapContextCreate(spriteData, width, height, 8, width*4, CGImageGetColorSpace(spriteImage), kCGImageAlphaPremultipliedLast);
+    CGRect rect = CGRectMake(0, 0, width, height);
+    //翻转图片
+    CGContextTranslateCTM(spriteContext, rect.origin.x, rect.origin.y);
+    CGContextTranslateCTM(spriteContext, 0, height);
+    CGContextScaleCTM(spriteContext, 1, -1);
+    CGContextTranslateCTM(spriteContext, -1.0*rect.origin.x, -1.0*rect.origin.y);
+    CGContextDrawImage(spriteContext, rect, spriteImage);
+    CGContextRelease(spriteContext);
+    
+    GLuint texture;
+    glGenTextures(1, &texture);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, texture);
+    //设置纹理属性
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    float fw=width,fh=height;
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, fw, fh, 0, GL_RGBA, GL_UNSIGNED_BYTE, spriteData);
+    free(spriteData);
+    return texture;
 }
 -(void)setUpFrameBuffer{
     GLuint frameBuffer;
@@ -75,5 +139,35 @@
     self.eagLayer=(CAEAGLLayer *)self.layer;
     [self setContentScaleFactor:[[UIScreen mainScreen]scale]];
     self.eagLayer.drawableProperties=@{kEAGLDrawablePropertyRetainedBacking:@NO,kEAGLDrawablePropertyColorFormat:kEAGLColorFormatRGBA8};
+}
+-(GLuint)loadShaders:(NSString *)vertFile frag:(NSString *)fragFile{
+    GLuint vertShader,fragShader;
+    GLuint program =  glCreateProgram();
+    [self compile:vertFile shader:&vertShader type:GL_VERTEX_SHADER];
+    [self compile:fragFile shader:&fragShader type:GL_FRAGMENT_SHADER];
+    glAttachShader(program, vertShader);
+    glAttachShader(program, fragShader);
+    glLinkProgram(program);
+    GLint params;
+    glGetProgramiv(program, GL_LINK_STATUS, &params);
+    if (params == GL_FALSE) {
+        NSLog(@"链接失败");
+        exit(1);
+    }
+    glUseProgram(program);
+    glDetachShader(program, vertShader);
+    glDeleteShader(vertShader);
+    vertShader=0;
+    glDetachShader(program, fragShader);
+    glDeleteShader(fragShader);
+    fragShader=0;
+    return program;
+}
+-(void)compile:(NSString *)filePath shader:(GLuint *)shader type:(GLenum)type{
+    NSString *shaderContent = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+    const GLchar *source=(GLchar *)[shaderContent UTF8String];
+    *shader = glCreateShader(type);
+    glShaderSource(*shader, 1, &source, NULL);
+    glCompileShader(*shader);
 }
 @end

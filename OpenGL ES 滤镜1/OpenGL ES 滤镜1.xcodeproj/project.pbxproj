@@ -17,6 +17,9 @@
 		2D3B7AC324DE3E5100FFE5BE /* OpenGL_ES___1UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3B7AC224DE3E5100FFE5BE /* OpenGL_ES___1UITests.m */; };
 		2D3B7AD224DE3E7600FFE5BE /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3B7AD124DE3E7600FFE5BE /* EAGLView.m */; };
 		2D3B7AD524DE3FDC00FFE5BE /* WZCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3B7AD424DE3FDC00FFE5BE /* WZCViewController.m */; };
+		2D3B7AD724DE578600FFE5BE /* Shaders.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2D3B7AD624DE578600FFE5BE /* Shaders.vsh */; };
+		2D3B7AD924DE579900FFE5BE /* Shaderf.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2D3B7AD824DE579900FFE5BE /* Shaderf.fsh */; };
+		2D3B7ADB24DEF85E00FFE5BE /* timg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2D3B7ADA24DEF85E00FFE5BE /* timg.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,9 @@
 		2D3B7AD124DE3E7600FFE5BE /* EAGLView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EAGLView.m; sourceTree = "<group>"; };
 		2D3B7AD324DE3FDC00FFE5BE /* WZCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WZCViewController.h; sourceTree = "<group>"; };
 		2D3B7AD424DE3FDC00FFE5BE /* WZCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WZCViewController.m; sourceTree = "<group>"; };
+		2D3B7AD624DE578600FFE5BE /* Shaders.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Shaders.vsh; sourceTree = "<group>"; };
+		2D3B7AD824DE579900FFE5BE /* Shaderf.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Shaderf.fsh; sourceTree = "<group>"; };
+		2D3B7ADA24DEF85E00FFE5BE /* timg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = timg.jpeg; path = "../../OpenGL ES 纹理与颜色混合/OpenGL ES 索引绘图/timg.jpeg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,7 @@
 		2D3B7A9A24DE3E4F00FFE5BE /* OpenGL ES 滤镜1 */ = {
 			isa = PBXGroup;
 			children = (
+				2D3B7ADA24DEF85E00FFE5BE /* timg.jpeg */,
 				2D3B7A9B24DE3E4F00FFE5BE /* AppDelegate.h */,
 				2D3B7A9C24DE3E4F00FFE5BE /* AppDelegate.m */,
 				2D3B7A9E24DE3E4F00FFE5BE /* SceneDelegate.h */,
@@ -115,6 +122,8 @@
 				2D3B7AD424DE3FDC00FFE5BE /* WZCViewController.m */,
 				2D3B7AD024DE3E7600FFE5BE /* EAGLView.h */,
 				2D3B7AD124DE3E7600FFE5BE /* EAGLView.m */,
+				2D3B7AD624DE578600FFE5BE /* Shaders.vsh */,
+				2D3B7AD824DE579900FFE5BE /* Shaderf.fsh */,
 				2D3B7AA424DE3E4F00FFE5BE /* Main.storyboard */,
 				2D3B7AA724DE3E5100FFE5BE /* Assets.xcassets */,
 				2D3B7AA924DE3E5100FFE5BE /* LaunchScreen.storyboard */,
@@ -245,6 +254,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D3B7AD724DE578600FFE5BE /* Shaders.vsh in Resources */,
+				2D3B7AD924DE579900FFE5BE /* Shaderf.fsh in Resources */,
+				2D3B7ADB24DEF85E00FFE5BE /* timg.jpeg in Resources */,
 				2D3B7AAB24DE3E5100FFE5BE /* LaunchScreen.storyboard in Resources */,
 				2D3B7AA824DE3E5100FFE5BE /* Assets.xcassets in Resources */,
 				2D3B7AA624DE3E4F00FFE5BE /* Main.storyboard in Resources */,
