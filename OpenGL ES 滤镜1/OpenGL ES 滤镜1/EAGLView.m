@@ -39,8 +39,8 @@ typedef struct {
     CGFloat scale = [[UIScreen mainScreen]scale];
     CGRect rect = self.frame;
     glViewport(rect.origin.x*scale, rect.origin.y*scale, rect.size.width*scale, rect.size.height*scale);
-    NSString *vertPath = [[NSBundle mainBundle]pathForResource:@"Shaders" ofType:@"vsh"];
-    NSString *fragPath = [[NSBundle mainBundle]pathForResource:@"Shaderf" ofType:@"fsh"];
+    NSString *vertPath = [[NSBundle mainBundle]pathForResource:@"SplitScreen_4" ofType:@"vsh"];
+    NSString *fragPath = [[NSBundle mainBundle]pathForResource:@"SplitScreen_4" ofType:@"fsh"];
     self.program = [self loadShaders:vertPath frag:fragPath];
     
     ScnceVertex verts[]={
