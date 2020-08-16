@@ -39,8 +39,8 @@ typedef struct {
     CGFloat scale = [[UIScreen mainScreen]scale];
     CGRect rect = self.frame;
     glViewport(rect.origin.x*scale, rect.origin.y*scale, rect.size.width*scale, rect.size.height*scale);
-    NSString *vertPath = [[NSBundle mainBundle]pathForResource:@"SplitScreen_4" ofType:@"vsh"];
-    NSString *fragPath = [[NSBundle mainBundle]pathForResource:@"SplitScreen_4" ofType:@"fsh"];
+    NSString *vertPath = [[NSBundle mainBundle]pathForResource:@"TrigngularMosaic" ofType:@"vsh"];
+    NSString *fragPath = [[NSBundle mainBundle]pathForResource:@"TrigngularMosaic" ofType:@"fsh"];
     self.program = [self loadShaders:vertPath frag:fragPath];
     
     ScnceVertex verts[]={
@@ -66,9 +66,18 @@ typedef struct {
     [self setUpTexture:@"timg.jpeg"];
     GLuint colorMap = glGetUniformLocation(self.program, "colorMap");
     glUniform1i(colorMap, 0);
+    GLuint TexSize = glGetUniformLocation(self.program, "TexSize");
+    CGSize size = [self getSizeImage:@"timg.jpeg"];
+    glUniform2f(TexSize, size.width, size.height);
     glEnable(GL_DEPTH_TEST);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     [self.eaglContext presentRenderbuffer:GL_RENDERBUFFER];
+}
+-(CGSize)getSizeImage:(NSString *)imageName{
+    CGImageRef spriteImage = [UIImage imageNamed:imageName].CGImage;
+    size_t width = CGImageGetWidth(spriteImage);
+    size_t height = CGImageGetHeight(spriteImage);
+    return CGSizeMake(width, height);
 }
 -(GLuint)setUpTexture:(NSString *)imageName{
     CGImageRef spriteImage = [UIImage imageNamed:imageName].CGImage;
