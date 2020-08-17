@@ -20,6 +20,12 @@
 		2D3B7AD724DE578600FFE5BE /* Shaders.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2D3B7AD624DE578600FFE5BE /* Shaders.vsh */; };
 		2D3B7AD924DE579900FFE5BE /* Shaderf.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2D3B7AD824DE579900FFE5BE /* Shaderf.fsh */; };
 		2D3B7ADB24DEF85E00FFE5BE /* timg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2D3B7ADA24DEF85E00FFE5BE /* timg.jpeg */; };
+		2DFD682D24E67C9E005ADC56 /* SplitScreen_6.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DFD682C24E67C9E005ADC56 /* SplitScreen_6.vsh */; };
+		2DFD683024E67CB4005ADC56 /* SplitScreen_6.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DFD682F24E67CB4005ADC56 /* SplitScreen_6.fsh */; };
+		2DFD683324E69044005ADC56 /* SplitScreen_9.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DFD683224E69044005ADC56 /* SplitScreen_9.vsh */; };
+		2DFD683524E69053005ADC56 /* SplitScreen_9.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DFD683424E69053005ADC56 /* SplitScreen_9.fsh */; };
+		2DFD683824E6918B005ADC56 /* BlackWhite.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DFD683724E6918B005ADC56 /* BlackWhite.vsh */; };
+		2DFD683A24E69198005ADC56 /* BlackWhite.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DFD683924E69198005ADC56 /* BlackWhite.fsh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +69,12 @@
 		2D3B7AD624DE578600FFE5BE /* Shaders.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Shaders.vsh; sourceTree = "<group>"; };
 		2D3B7AD824DE579900FFE5BE /* Shaderf.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Shaderf.fsh; sourceTree = "<group>"; };
 		2D3B7ADA24DEF85E00FFE5BE /* timg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = timg.jpeg; path = "../../OpenGL ES 纹理与颜色混合/OpenGL ES 索引绘图/timg.jpeg"; sourceTree = "<group>"; };
+		2DFD682C24E67C9E005ADC56 /* SplitScreen_6.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = SplitScreen_6.vsh; sourceTree = "<group>"; };
+		2DFD682F24E67CB4005ADC56 /* SplitScreen_6.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = SplitScreen_6.fsh; sourceTree = "<group>"; };
+		2DFD683224E69044005ADC56 /* SplitScreen_9.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = SplitScreen_9.vsh; sourceTree = "<group>"; };
+		2DFD683424E69053005ADC56 /* SplitScreen_9.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = SplitScreen_9.fsh; sourceTree = "<group>"; };
+		2DFD683724E6918B005ADC56 /* BlackWhite.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = BlackWhite.vsh; sourceTree = "<group>"; };
+		2DFD683924E69198005ADC56 /* BlackWhite.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = BlackWhite.fsh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +125,9 @@
 		2D3B7A9A24DE3E4F00FFE5BE /* OpenGL ES 滤镜1 */ = {
 			isa = PBXGroup;
 			children = (
+				2DFD683624E6917B005ADC56 /* BlackWhite */,
+				2DFD683124E69017005ADC56 /* SplitScreen_9 */,
+				2DFD682B24E67C77005ADC56 /* SplitScreen_6 */,
 				2D3B7ADA24DEF85E00FFE5BE /* timg.jpeg */,
 				2D3B7A9B24DE3E4F00FFE5BE /* AppDelegate.h */,
 				2D3B7A9C24DE3E4F00FFE5BE /* AppDelegate.m */,
@@ -149,6 +164,33 @@
 				2D3B7AC424DE3E5100FFE5BE /* Info.plist */,
 			);
 			path = "OpenGL ES 滤镜1UITests";
+			sourceTree = "<group>";
+		};
+		2DFD682B24E67C77005ADC56 /* SplitScreen_6 */ = {
+			isa = PBXGroup;
+			children = (
+				2DFD682C24E67C9E005ADC56 /* SplitScreen_6.vsh */,
+				2DFD682F24E67CB4005ADC56 /* SplitScreen_6.fsh */,
+			);
+			path = SplitScreen_6;
+			sourceTree = "<group>";
+		};
+		2DFD683124E69017005ADC56 /* SplitScreen_9 */ = {
+			isa = PBXGroup;
+			children = (
+				2DFD683224E69044005ADC56 /* SplitScreen_9.vsh */,
+				2DFD683424E69053005ADC56 /* SplitScreen_9.fsh */,
+			);
+			path = SplitScreen_9;
+			sourceTree = "<group>";
+		};
+		2DFD683624E6917B005ADC56 /* BlackWhite */ = {
+			isa = PBXGroup;
+			children = (
+				2DFD683724E6918B005ADC56 /* BlackWhite.vsh */,
+				2DFD683924E69198005ADC56 /* BlackWhite.fsh */,
+			);
+			path = BlackWhite;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,10 +297,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D3B7AD724DE578600FFE5BE /* Shaders.vsh in Resources */,
+				2DFD683024E67CB4005ADC56 /* SplitScreen_6.fsh in Resources */,
+				2DFD683524E69053005ADC56 /* SplitScreen_9.fsh in Resources */,
 				2D3B7AD924DE579900FFE5BE /* Shaderf.fsh in Resources */,
 				2D3B7ADB24DEF85E00FFE5BE /* timg.jpeg in Resources */,
+				2DFD682D24E67C9E005ADC56 /* SplitScreen_6.vsh in Resources */,
 				2D3B7AAB24DE3E5100FFE5BE /* LaunchScreen.storyboard in Resources */,
+				2DFD683A24E69198005ADC56 /* BlackWhite.fsh in Resources */,
 				2D3B7AA824DE3E5100FFE5BE /* Assets.xcassets in Resources */,
+				2DFD683824E6918B005ADC56 /* BlackWhite.vsh in Resources */,
+				2DFD683324E69044005ADC56 /* SplitScreen_9.vsh in Resources */,
 				2D3B7AA624DE3E4F00FFE5BE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,14 +505,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = M8BT5E8SES;
 				INFOPLIST_FILE = "OpenGL ES 滤镜1/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.wuchuang.OpenGL-ES---1";
+				PRODUCT_BUNDLE_IDENTIFIER = com.seca.zhibotv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = nucomDev;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -473,14 +524,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = M8BT5E8SES;
 				INFOPLIST_FILE = "OpenGL ES 滤镜1/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.wuchuang.OpenGL-ES---1";
+				PRODUCT_BUNDLE_IDENTIFIER = com.seca.zhibotv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = nucomDev;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
