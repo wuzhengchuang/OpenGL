@@ -15,11 +15,15 @@ typedef struct {
     GLKVector2 textureCoord;
 }ScnceVertex;
 @interface EAGLView ()
+{
+    CADisplayLink *displayLink;
+}
 @property(nonatomic,strong)CAEAGLLayer *eagLayer;
 @property(nonatomic,strong)EAGLContext *eaglContext;
 @property(nonatomic,assign)GLuint colorRenderBuffer;
 @property(nonatomic,assign)GLuint colorFrameBuffer;
 @property(nonatomic,assign)GLuint program;
+@property(nonatomic,assign)GLuint vertBuffer;
 @end
 @implementation EAGLView
 - (void)layoutSubviews{
@@ -29,6 +33,23 @@ typedef struct {
     [self setUpRenderBuffer];
     [self setUpFrameBuffer];
     [self render];
+    displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(timeClick)];
+    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+}
+float startTimeInterval=0.0;
+-(void)timeClick{
+    if (startTimeInterval == 0.0) {
+        startTimeInterval = displayLink.timestamp;
+    }
+    glUseProgram(self.program);
+    glBindBuffer(GL_ARRAY_BUFFER, self.vertBuffer);
+
+    GLuint time = glGetUniformLocation(self.program, "time");
+    glUniform1f(time, displayLink.timestamp-startTimeInterval);
+    glClearColor(1, 0, 0, 1);
+    glClear(GL_COLOR_BUFFER_BIT);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    [self.eaglContext presentRenderbuffer:GL_RENDERBUFFER];
 }
 + (Class)layerClass{
     return [CAEAGLLayer class];
@@ -39,8 +60,8 @@ typedef struct {
     CGFloat scale = [[UIScreen mainScreen]scale];
     CGRect rect = self.frame;
     glViewport(rect.origin.x*scale, rect.origin.y*scale, rect.size.width*scale, rect.size.height*scale);
-    NSString *vertPath = [[NSBundle mainBundle]pathForResource:@"TrigngularMosaic" ofType:@"vsh"];
-    NSString *fragPath = [[NSBundle mainBundle]pathForResource:@"TrigngularMosaic" ofType:@"fsh"];
+    NSString *vertPath = [[NSBundle mainBundle]pathForResource:@"Glitch" ofType:@"vsh"];
+    NSString *fragPath = [[NSBundle mainBundle]pathForResource:@"Glitch" ofType:@"fsh"];
     self.program = [self loadShaders:vertPath frag:fragPath];
     
     ScnceVertex verts[]={
@@ -53,7 +74,7 @@ typedef struct {
     glGenBuffers(1, &buffer);
     glBindBuffer(GL_ARRAY_BUFFER, buffer);
     glBufferData(GL_ARRAY_BUFFER, sizeof(verts), verts, GL_DYNAMIC_DRAW);
-    
+    self.vertBuffer=buffer;
     
     GLuint position = glGetAttribLocation(self.program, "position");
     glEnableVertexAttribArray(position);
