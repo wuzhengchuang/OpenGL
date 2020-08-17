@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D0372E024E5828B00921DD4 /* SplitScreen_2.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2D0372DF24E5828B00921DD4 /* SplitScreen_2.vsh */; };
+		2D0372E224E5829B00921DD4 /* SplitScreen_2.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2D0372E124E5829B00921DD4 /* SplitScreen_2.fsh */; };
+		2D0372E524E584D700921DD4 /* SplitScreen_3.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2D0372E424E584D700921DD4 /* SplitScreen_3.vsh */; };
+		2D0372E724E584E500921DD4 /* SplitScreen_3.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2D0372E624E584E500921DD4 /* SplitScreen_3.fsh */; };
+		2D0372EA24E5944C00921DD4 /* SplitScreen_4.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2D0372E924E5944C00921DD4 /* SplitScreen_4.vsh */; };
+		2D0372EC24E5945900921DD4 /* SplitScreen_4.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2D0372EB24E5945900921DD4 /* SplitScreen_4.fsh */; };
 		2D3B7A9D24DE3E4F00FFE5BE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3B7A9C24DE3E4F00FFE5BE /* AppDelegate.m */; };
 		2D3B7AA024DE3E4F00FFE5BE /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3B7A9F24DE3E4F00FFE5BE /* SceneDelegate.m */; };
 		2D3B7AA624DE3E4F00FFE5BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D3B7AA424DE3E4F00FFE5BE /* Main.storyboard */; };
@@ -20,12 +26,16 @@
 		2D3B7AD724DE578600FFE5BE /* Shaders.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2D3B7AD624DE578600FFE5BE /* Shaders.vsh */; };
 		2D3B7AD924DE579900FFE5BE /* Shaderf.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2D3B7AD824DE579900FFE5BE /* Shaderf.fsh */; };
 		2D3B7ADB24DEF85E00FFE5BE /* timg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2D3B7ADA24DEF85E00FFE5BE /* timg.jpeg */; };
-		2DFD682D24E67C9E005ADC56 /* SplitScreen_6.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DFD682C24E67C9E005ADC56 /* SplitScreen_6.vsh */; };
-		2DFD683024E67CB4005ADC56 /* SplitScreen_6.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DFD682F24E67CB4005ADC56 /* SplitScreen_6.fsh */; };
-		2DFD683324E69044005ADC56 /* SplitScreen_9.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DFD683224E69044005ADC56 /* SplitScreen_9.vsh */; };
-		2DFD683524E69053005ADC56 /* SplitScreen_9.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DFD683424E69053005ADC56 /* SplitScreen_9.fsh */; };
-		2DFD683824E6918B005ADC56 /* BlackWhite.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DFD683724E6918B005ADC56 /* BlackWhite.vsh */; };
-		2DFD683A24E69198005ADC56 /* BlackWhite.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DFD683924E69198005ADC56 /* BlackWhite.fsh */; };
+		2D79617E24E8CCEC001087DE /* HexagonMosaic.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2D79617D24E8CCEC001087DE /* HexagonMosaic.vsh */; };
+		2D79618024E8CCFE001087DE /* HexagonMosaic.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2D79617F24E8CCFE001087DE /* HexagonMosaic.fsh */; };
+		2D79618324E8EE0A001087DE /* TrigngularMosaic.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2D79618224E8EE0A001087DE /* TrigngularMosaic.vsh */; };
+		2D79618524E8EE18001087DE /* TrigngularMosaic.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2D79618424E8EE18001087DE /* TrigngularMosaic.fsh */; };
+		2DBC8DB924E7ECF5001DB4BE /* Gray.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DBC8DB824E7ECF5001DB4BE /* Gray.vsh */; };
+		2DBC8DBB24E7ED05001DB4BE /* Gray.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DBC8DBA24E7ED05001DB4BE /* Gray.fsh */; };
+		2DBC8DBE24E7F1A4001DB4BE /* Down.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DBC8DBD24E7F1A4001DB4BE /* Down.vsh */; };
+		2DBC8DC024E7F1B4001DB4BE /* Down.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DBC8DBF24E7F1B4001DB4BE /* Down.fsh */; };
+		2DBC8DC324E7F649001DB4BE /* Mosaic.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DBC8DC224E7F649001DB4BE /* Mosaic.vsh */; };
+		2DBC8DC524E7F656001DB4BE /* Mosaic.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DBC8DC424E7F656001DB4BE /* Mosaic.fsh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +56,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D0372DF24E5828B00921DD4 /* SplitScreen_2.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = SplitScreen_2.vsh; sourceTree = "<group>"; };
+		2D0372E124E5829B00921DD4 /* SplitScreen_2.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = SplitScreen_2.fsh; sourceTree = "<group>"; };
+		2D0372E424E584D700921DD4 /* SplitScreen_3.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = SplitScreen_3.vsh; sourceTree = "<group>"; };
+		2D0372E624E584E500921DD4 /* SplitScreen_3.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = SplitScreen_3.fsh; sourceTree = "<group>"; };
+		2D0372E924E5944C00921DD4 /* SplitScreen_4.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = SplitScreen_4.vsh; sourceTree = "<group>"; };
+		2D0372EB24E5945900921DD4 /* SplitScreen_4.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = SplitScreen_4.fsh; sourceTree = "<group>"; };
 		2D3B7A9824DE3E4F00FFE5BE /* OpenGL ES 滤镜1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OpenGL ES 滤镜1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D3B7A9B24DE3E4F00FFE5BE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2D3B7A9C24DE3E4F00FFE5BE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -69,12 +85,16 @@
 		2D3B7AD624DE578600FFE5BE /* Shaders.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Shaders.vsh; sourceTree = "<group>"; };
 		2D3B7AD824DE579900FFE5BE /* Shaderf.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Shaderf.fsh; sourceTree = "<group>"; };
 		2D3B7ADA24DEF85E00FFE5BE /* timg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = timg.jpeg; path = "../../OpenGL ES 纹理与颜色混合/OpenGL ES 索引绘图/timg.jpeg"; sourceTree = "<group>"; };
-		2DFD682C24E67C9E005ADC56 /* SplitScreen_6.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = SplitScreen_6.vsh; sourceTree = "<group>"; };
-		2DFD682F24E67CB4005ADC56 /* SplitScreen_6.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = SplitScreen_6.fsh; sourceTree = "<group>"; };
-		2DFD683224E69044005ADC56 /* SplitScreen_9.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = SplitScreen_9.vsh; sourceTree = "<group>"; };
-		2DFD683424E69053005ADC56 /* SplitScreen_9.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = SplitScreen_9.fsh; sourceTree = "<group>"; };
-		2DFD683724E6918B005ADC56 /* BlackWhite.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = BlackWhite.vsh; sourceTree = "<group>"; };
-		2DFD683924E69198005ADC56 /* BlackWhite.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = BlackWhite.fsh; sourceTree = "<group>"; };
+		2D79617D24E8CCEC001087DE /* HexagonMosaic.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = HexagonMosaic.vsh; sourceTree = "<group>"; };
+		2D79617F24E8CCFE001087DE /* HexagonMosaic.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = HexagonMosaic.fsh; sourceTree = "<group>"; };
+		2D79618224E8EE0A001087DE /* TrigngularMosaic.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = TrigngularMosaic.vsh; sourceTree = "<group>"; };
+		2D79618424E8EE18001087DE /* TrigngularMosaic.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = TrigngularMosaic.fsh; sourceTree = "<group>"; };
+		2DBC8DB824E7ECF5001DB4BE /* Gray.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Gray.vsh; sourceTree = "<group>"; };
+		2DBC8DBA24E7ED05001DB4BE /* Gray.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Gray.fsh; sourceTree = "<group>"; };
+		2DBC8DBD24E7F1A4001DB4BE /* Down.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Down.vsh; sourceTree = "<group>"; };
+		2DBC8DBF24E7F1B4001DB4BE /* Down.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Down.fsh; sourceTree = "<group>"; };
+		2DBC8DC224E7F649001DB4BE /* Mosaic.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Mosaic.vsh; sourceTree = "<group>"; };
+		2DBC8DC424E7F656001DB4BE /* Mosaic.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Mosaic.fsh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +122,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D0372DD24E5824C00921DD4 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				2D79618124E8EDE7001087DE /* TrigngularMosaic */,
+				2D79617C24E8CCC5001087DE /* HexagonMosaic */,
+				2DBC8DC124E7F625001DB4BE /* Mosaic */,
+				2DBC8DBC24E7F190001DB4BE /* Down */,
+				2DBC8DB724E7ECDD001DB4BE /* Gray */,
+				2D0372E824E5943500921DD4 /* SplitScreen_4 */,
+				2D0372E324E584BA00921DD4 /* SplitScreen_3 */,
+				2D0372DE24E5826300921DD4 /* SplitScreen_2 */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		2D0372DE24E5826300921DD4 /* SplitScreen_2 */ = {
+			isa = PBXGroup;
+			children = (
+				2D0372DF24E5828B00921DD4 /* SplitScreen_2.vsh */,
+				2D0372E124E5829B00921DD4 /* SplitScreen_2.fsh */,
+			);
+			path = SplitScreen_2;
+			sourceTree = "<group>";
+		};
+		2D0372E324E584BA00921DD4 /* SplitScreen_3 */ = {
+			isa = PBXGroup;
+			children = (
+				2D0372E424E584D700921DD4 /* SplitScreen_3.vsh */,
+				2D0372E624E584E500921DD4 /* SplitScreen_3.fsh */,
+			);
+			path = SplitScreen_3;
+			sourceTree = "<group>";
+		};
+		2D0372E824E5943500921DD4 /* SplitScreen_4 */ = {
+			isa = PBXGroup;
+			children = (
+				2D0372E924E5944C00921DD4 /* SplitScreen_4.vsh */,
+				2D0372EB24E5945900921DD4 /* SplitScreen_4.fsh */,
+			);
+			path = SplitScreen_4;
+			sourceTree = "<group>";
+		};
 		2D3B7A8F24DE3E4F00FFE5BE = {
 			isa = PBXGroup;
 			children = (
@@ -125,9 +187,7 @@
 		2D3B7A9A24DE3E4F00FFE5BE /* OpenGL ES 滤镜1 */ = {
 			isa = PBXGroup;
 			children = (
-				2DFD683624E6917B005ADC56 /* BlackWhite */,
-				2DFD683124E69017005ADC56 /* SplitScreen_9 */,
-				2DFD682B24E67C77005ADC56 /* SplitScreen_6 */,
+				2D0372DD24E5824C00921DD4 /* Filter */,
 				2D3B7ADA24DEF85E00FFE5BE /* timg.jpeg */,
 				2D3B7A9B24DE3E4F00FFE5BE /* AppDelegate.h */,
 				2D3B7A9C24DE3E4F00FFE5BE /* AppDelegate.m */,
@@ -166,31 +226,49 @@
 			path = "OpenGL ES 滤镜1UITests";
 			sourceTree = "<group>";
 		};
-		2DFD682B24E67C77005ADC56 /* SplitScreen_6 */ = {
+		2D79617C24E8CCC5001087DE /* HexagonMosaic */ = {
 			isa = PBXGroup;
 			children = (
-				2DFD682C24E67C9E005ADC56 /* SplitScreen_6.vsh */,
-				2DFD682F24E67CB4005ADC56 /* SplitScreen_6.fsh */,
+				2D79617D24E8CCEC001087DE /* HexagonMosaic.vsh */,
+				2D79617F24E8CCFE001087DE /* HexagonMosaic.fsh */,
 			);
-			path = SplitScreen_6;
+			path = HexagonMosaic;
 			sourceTree = "<group>";
 		};
-		2DFD683124E69017005ADC56 /* SplitScreen_9 */ = {
+		2D79618124E8EDE7001087DE /* TrigngularMosaic */ = {
 			isa = PBXGroup;
 			children = (
-				2DFD683224E69044005ADC56 /* SplitScreen_9.vsh */,
-				2DFD683424E69053005ADC56 /* SplitScreen_9.fsh */,
+				2D79618224E8EE0A001087DE /* TrigngularMosaic.vsh */,
+				2D79618424E8EE18001087DE /* TrigngularMosaic.fsh */,
 			);
-			path = SplitScreen_9;
+			path = TrigngularMosaic;
 			sourceTree = "<group>";
 		};
-		2DFD683624E6917B005ADC56 /* BlackWhite */ = {
+		2DBC8DB724E7ECDD001DB4BE /* Gray */ = {
 			isa = PBXGroup;
 			children = (
-				2DFD683724E6918B005ADC56 /* BlackWhite.vsh */,
-				2DFD683924E69198005ADC56 /* BlackWhite.fsh */,
+				2DBC8DB824E7ECF5001DB4BE /* Gray.vsh */,
+				2DBC8DBA24E7ED05001DB4BE /* Gray.fsh */,
 			);
-			path = BlackWhite;
+			path = Gray;
+			sourceTree = "<group>";
+		};
+		2DBC8DBC24E7F190001DB4BE /* Down */ = {
+			isa = PBXGroup;
+			children = (
+				2DBC8DBD24E7F1A4001DB4BE /* Down.vsh */,
+				2DBC8DBF24E7F1B4001DB4BE /* Down.fsh */,
+			);
+			path = Down;
+			sourceTree = "<group>";
+		};
+		2DBC8DC124E7F625001DB4BE /* Mosaic */ = {
+			isa = PBXGroup;
+			children = (
+				2DBC8DC224E7F649001DB4BE /* Mosaic.vsh */,
+				2DBC8DC424E7F656001DB4BE /* Mosaic.fsh */,
+			);
+			path = Mosaic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,17 +375,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D3B7AD724DE578600FFE5BE /* Shaders.vsh in Resources */,
-				2DFD683024E67CB4005ADC56 /* SplitScreen_6.fsh in Resources */,
-				2DFD683524E69053005ADC56 /* SplitScreen_9.fsh in Resources */,
 				2D3B7AD924DE579900FFE5BE /* Shaderf.fsh in Resources */,
 				2D3B7ADB24DEF85E00FFE5BE /* timg.jpeg in Resources */,
-				2DFD682D24E67C9E005ADC56 /* SplitScreen_6.vsh in Resources */,
+				2DBC8DC324E7F649001DB4BE /* Mosaic.vsh in Resources */,
+				2D79617E24E8CCEC001087DE /* HexagonMosaic.vsh in Resources */,
 				2D3B7AAB24DE3E5100FFE5BE /* LaunchScreen.storyboard in Resources */,
-				2DFD683A24E69198005ADC56 /* BlackWhite.fsh in Resources */,
+				2D79618524E8EE18001087DE /* TrigngularMosaic.fsh in Resources */,
+				2D0372E724E584E500921DD4 /* SplitScreen_3.fsh in Resources */,
+				2DBC8DB924E7ECF5001DB4BE /* Gray.vsh in Resources */,
+				2D0372EA24E5944C00921DD4 /* SplitScreen_4.vsh in Resources */,
+				2DBC8DBE24E7F1A4001DB4BE /* Down.vsh in Resources */,
 				2D3B7AA824DE3E5100FFE5BE /* Assets.xcassets in Resources */,
-				2DFD683824E6918B005ADC56 /* BlackWhite.vsh in Resources */,
-				2DFD683324E69044005ADC56 /* SplitScreen_9.vsh in Resources */,
+				2D0372EC24E5945900921DD4 /* SplitScreen_4.fsh in Resources */,
+				2D0372E224E5829B00921DD4 /* SplitScreen_2.fsh in Resources */,
+				2DBC8DBB24E7ED05001DB4BE /* Gray.fsh in Resources */,
+				2DBC8DC524E7F656001DB4BE /* Mosaic.fsh in Resources */,
+				2D0372E024E5828B00921DD4 /* SplitScreen_2.vsh in Resources */,
+				2D0372E524E584D700921DD4 /* SplitScreen_3.vsh in Resources */,
 				2D3B7AA624DE3E4F00FFE5BE /* Main.storyboard in Resources */,
+				2D79618024E8CCFE001087DE /* HexagonMosaic.fsh in Resources */,
+				2DBC8DC024E7F1B4001DB4BE /* Down.fsh in Resources */,
+				2D79618324E8EE0A001087DE /* TrigngularMosaic.vsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
