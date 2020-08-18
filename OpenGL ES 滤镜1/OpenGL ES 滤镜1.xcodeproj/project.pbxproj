@@ -40,6 +40,8 @@
 		2DA6350224EA7DAF00273CA9 /* TurnWhite.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DA6350124EA7DAF00273CA9 /* TurnWhite.fsh */; };
 		2DA6350724EA853C00273CA9 /* Glitch.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DA6350624EA853C00273CA9 /* Glitch.vsh */; };
 		2DA6350924EA854900273CA9 /* Glitch.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DA6350824EA854900273CA9 /* Glitch.fsh */; };
+		2DA6350C24EBB25D00273CA9 /* Vertigo.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DA6350B24EBB25D00273CA9 /* Vertigo.vsh */; };
+		2DA6350E24EBB26B00273CA9 /* Vertigo.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DA6350D24EBB26B00273CA9 /* Vertigo.fsh */; };
 		2DBC8DB924E7ECF5001DB4BE /* Gray.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DBC8DB824E7ECF5001DB4BE /* Gray.vsh */; };
 		2DBC8DBB24E7ED05001DB4BE /* Gray.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DBC8DBA24E7ED05001DB4BE /* Gray.fsh */; };
 		2DBC8DBE24E7F1A4001DB4BE /* Down.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DBC8DBD24E7F1A4001DB4BE /* Down.vsh */; };
@@ -109,6 +111,8 @@
 		2DA6350124EA7DAF00273CA9 /* TurnWhite.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = TurnWhite.fsh; sourceTree = "<group>"; };
 		2DA6350624EA853C00273CA9 /* Glitch.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Glitch.vsh; sourceTree = "<group>"; };
 		2DA6350824EA854900273CA9 /* Glitch.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Glitch.fsh; sourceTree = "<group>"; };
+		2DA6350B24EBB25D00273CA9 /* Vertigo.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Vertigo.vsh; sourceTree = "<group>"; };
+		2DA6350D24EBB26B00273CA9 /* Vertigo.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Vertigo.fsh; sourceTree = "<group>"; };
 		2DBC8DB824E7ECF5001DB4BE /* Gray.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Gray.vsh; sourceTree = "<group>"; };
 		2DBC8DBA24E7ED05001DB4BE /* Gray.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Gray.fsh; sourceTree = "<group>"; };
 		2DBC8DBD24E7F1A4001DB4BE /* Down.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Down.vsh; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 		2D0372DD24E5824C00921DD4 /* Filter */ = {
 			isa = PBXGroup;
 			children = (
+				2DA6350A24EBB24500273CA9 /* Vertigo */,
 				2DA6350324EA846D00273CA9 /* Glitch */,
 				2DA634FE24EA7D7100273CA9 /* TurnWhite */,
 				2DA634F924EA696500273CA9 /* Shake */,
@@ -314,6 +319,15 @@
 			path = Glitch;
 			sourceTree = "<group>";
 		};
+		2DA6350A24EBB24500273CA9 /* Vertigo */ = {
+			isa = PBXGroup;
+			children = (
+				2DA6350B24EBB25D00273CA9 /* Vertigo.vsh */,
+				2DA6350D24EBB26B00273CA9 /* Vertigo.fsh */,
+			);
+			path = Vertigo;
+			sourceTree = "<group>";
+		};
 		2DBC8DB724E7ECDD001DB4BE /* Gray */ = {
 			isa = PBXGroup;
 			children = (
@@ -448,6 +462,7 @@
 				2DA634F124EA22CF00273CA9 /* Scale.vsh in Resources */,
 				2DA6350024EA7DA300273CA9 /* TurnWhite.vsh in Resources */,
 				2D3B7AD724DE578600FFE5BE /* Shaders.vsh in Resources */,
+				2DA6350E24EBB26B00273CA9 /* Vertigo.fsh in Resources */,
 				2D3B7AD924DE579900FFE5BE /* Shaderf.fsh in Resources */,
 				2D3B7ADB24DEF85E00FFE5BE /* timg.jpeg in Resources */,
 				2DBC8DC324E7F649001DB4BE /* Mosaic.vsh in Resources */,
@@ -467,6 +482,7 @@
 				2DA6350924EA854900273CA9 /* Glitch.fsh in Resources */,
 				2DBC8DBB24E7ED05001DB4BE /* Gray.fsh in Resources */,
 				2DA6350724EA853C00273CA9 /* Glitch.vsh in Resources */,
+				2DA6350C24EBB25D00273CA9 /* Vertigo.vsh in Resources */,
 				2DBC8DC524E7F656001DB4BE /* Mosaic.fsh in Resources */,
 				2DA634FD24EA69A300273CA9 /* Shake.fsh in Resources */,
 				2DA634F824EA2F1B00273CA9 /* SoulOut.fsh in Resources */,
