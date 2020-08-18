@@ -60,8 +60,8 @@ float startTimeInterval=0.0;
     CGFloat scale = [[UIScreen mainScreen]scale];
     CGRect rect = self.frame;
     glViewport(rect.origin.x*scale, rect.origin.y*scale, rect.size.width*scale, rect.size.height*scale);
-    NSString *vertPath = [[NSBundle mainBundle]pathForResource:@"Glitch" ofType:@"vsh"];
-    NSString *fragPath = [[NSBundle mainBundle]pathForResource:@"Glitch" ofType:@"fsh"];
+    NSString *vertPath = [[NSBundle mainBundle]pathForResource:@"Vertigo" ofType:@"vsh"];
+    NSString *fragPath = [[NSBundle mainBundle]pathForResource:@"Vertigo" ofType:@"fsh"];
     self.program = [self loadShaders:vertPath frag:fragPath];
     
     ScnceVertex verts[]={
