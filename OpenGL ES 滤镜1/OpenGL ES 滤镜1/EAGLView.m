@@ -60,8 +60,8 @@ float startTimeInterval=0.0;
     CGFloat scale = [[UIScreen mainScreen]scale];
     CGRect rect = self.frame;
     glViewport(rect.origin.x*scale, rect.origin.y*scale, rect.size.width*scale, rect.size.height*scale);
-    NSString *vertPath = [[NSBundle mainBundle]pathForResource:@"Vertigo" ofType:@"vsh"];
-    NSString *fragPath = [[NSBundle mainBundle]pathForResource:@"Vertigo" ofType:@"fsh"];
+    NSString *vertPath = [[NSBundle mainBundle]pathForResource:@"Shaders" ofType:@"vsh"];
+    NSString *fragPath = [[NSBundle mainBundle]pathForResource:@"Shaderf" ofType:@"fsh"];
     self.program = [self loadShaders:vertPath frag:fragPath];
     
     ScnceVertex verts[]={
@@ -85,8 +85,12 @@ float startTimeInterval=0.0;
     glVertexAttribPointer(textCoord, 2, GL_FLOAT, GL_FALSE, sizeof(ScnceVertex),NULL + offsetof(ScnceVertex, textureCoord));
     
     [self setUpTexture:@"timg.jpeg"];
-    GLuint colorMap = glGetUniformLocation(self.program, "colorMap");
-    glUniform1i(colorMap, 0);
+    GLuint bgTexture = glGetUniformLocation(self.program, "bgTexture");
+    glUniform1i(bgTexture, 0);
+    [self setUpTexture1:@"maoboli.png"];
+    GLuint biankuangTexture = glGetUniformLocation(self.program, "biankuangTexture");
+    glUniform1i(biankuangTexture, 1);
+    
     GLuint TexSize = glGetUniformLocation(self.program, "TexSize");
     CGSize size = [self getSizeImage:@"timg.jpeg"];
     glUniform2f(TexSize, size.width, size.height);
@@ -118,6 +122,35 @@ float startTimeInterval=0.0;
     GLuint texture;
     glGenTextures(1, &texture);
     glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, texture);
+    //设置纹理属性
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    float fw=width,fh=height;
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, fw, fh, 0, GL_RGBA, GL_UNSIGNED_BYTE, spriteData);
+    free(spriteData);
+    return texture;
+}
+-(GLuint)setUpTexture1:(NSString *)imageName{
+    CGImageRef spriteImage = [UIImage imageNamed:imageName].CGImage;
+    size_t width = CGImageGetWidth(spriteImage);
+    size_t height = CGImageGetHeight(spriteImage);
+    GLubyte *spriteData = calloc(width*height*4, sizeof(GLubyte));
+    CGContextRef spriteContext = CGBitmapContextCreate(spriteData, width, height, 8, width*4, CGImageGetColorSpace(spriteImage), kCGImageAlphaPremultipliedLast);
+    CGRect rect = CGRectMake(0, 0, width, height);
+    //翻转图片
+    CGContextTranslateCTM(spriteContext, rect.origin.x, rect.origin.y);
+    CGContextTranslateCTM(spriteContext, 0, height);
+    CGContextScaleCTM(spriteContext, 1, -1);
+    CGContextTranslateCTM(spriteContext, -1.0*rect.origin.x, -1.0*rect.origin.y);
+    CGContextDrawImage(spriteContext, rect, spriteImage);
+    CGContextRelease(spriteContext);
+    
+    GLuint texture;
+    glGenTextures(1, &texture);
+    glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, texture);
     //设置纹理属性
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);

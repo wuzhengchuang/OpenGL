@@ -26,6 +26,11 @@
 		2D3B7AD724DE578600FFE5BE /* Shaders.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2D3B7AD624DE578600FFE5BE /* Shaders.vsh */; };
 		2D3B7AD924DE579900FFE5BE /* Shaderf.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2D3B7AD824DE579900FFE5BE /* Shaderf.fsh */; };
 		2D3B7ADB24DEF85E00FFE5BE /* timg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2D3B7ADA24DEF85E00FFE5BE /* timg.jpeg */; };
+		2D691CC624EC1094009FBB13 /* biankuang.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D691CC524EC1094009FBB13 /* biankuang.png */; };
+		2D691CC824EC1440009FBB13 /* colors.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2D691CC724EC1440009FBB13 /* colors.jpg */; };
+		2D691CCA24EC14DB009FBB13 /* gaosi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2D691CC924EC14DB009FBB13 /* gaosi.jpg */; };
+		2D691CCC24EC16DF009FBB13 /* gaosi1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2D691CCB24EC16DE009FBB13 /* gaosi1.jpg */; };
+		2D691CCE24EC1730009FBB13 /* maoboli.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D691CCD24EC1730009FBB13 /* maoboli.png */; };
 		2D79617E24E8CCEC001087DE /* HexagonMosaic.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2D79617D24E8CCEC001087DE /* HexagonMosaic.vsh */; };
 		2D79618024E8CCFE001087DE /* HexagonMosaic.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2D79617F24E8CCFE001087DE /* HexagonMosaic.fsh */; };
 		2D79618324E8EE0A001087DE /* TrigngularMosaic.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2D79618224E8EE0A001087DE /* TrigngularMosaic.vsh */; };
@@ -97,6 +102,11 @@
 		2D3B7AD624DE578600FFE5BE /* Shaders.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Shaders.vsh; sourceTree = "<group>"; };
 		2D3B7AD824DE579900FFE5BE /* Shaderf.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Shaderf.fsh; sourceTree = "<group>"; };
 		2D3B7ADA24DEF85E00FFE5BE /* timg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = timg.jpeg; path = "../../OpenGL ES 纹理与颜色混合/OpenGL ES 索引绘图/timg.jpeg"; sourceTree = "<group>"; };
+		2D691CC524EC1094009FBB13 /* biankuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = biankuang.png; sourceTree = "<group>"; };
+		2D691CC724EC1440009FBB13 /* colors.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = colors.jpg; sourceTree = "<group>"; };
+		2D691CC924EC14DB009FBB13 /* gaosi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gaosi.jpg; sourceTree = "<group>"; };
+		2D691CCB24EC16DE009FBB13 /* gaosi1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gaosi1.jpg; sourceTree = "<group>"; };
+		2D691CCD24EC1730009FBB13 /* maoboli.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maoboli.png; sourceTree = "<group>"; };
 		2D79617D24E8CCEC001087DE /* HexagonMosaic.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = HexagonMosaic.vsh; sourceTree = "<group>"; };
 		2D79617F24E8CCFE001087DE /* HexagonMosaic.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = HexagonMosaic.fsh; sourceTree = "<group>"; };
 		2D79618224E8EE0A001087DE /* TrigngularMosaic.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = TrigngularMosaic.vsh; sourceTree = "<group>"; };
@@ -219,6 +229,11 @@
 			children = (
 				2D0372DD24E5824C00921DD4 /* Filter */,
 				2D3B7ADA24DEF85E00FFE5BE /* timg.jpeg */,
+				2D691CC724EC1440009FBB13 /* colors.jpg */,
+				2D691CC524EC1094009FBB13 /* biankuang.png */,
+				2D691CC924EC14DB009FBB13 /* gaosi.jpg */,
+				2D691CCB24EC16DE009FBB13 /* gaosi1.jpg */,
+				2D691CCD24EC1730009FBB13 /* maoboli.png */,
 				2D3B7A9B24DE3E4F00FFE5BE /* AppDelegate.h */,
 				2D3B7A9C24DE3E4F00FFE5BE /* AppDelegate.m */,
 				2D3B7A9E24DE3E4F00FFE5BE /* SceneDelegate.h */,
@@ -469,15 +484,19 @@
 				2D79617E24E8CCEC001087DE /* HexagonMosaic.vsh in Resources */,
 				2D3B7AAB24DE3E5100FFE5BE /* LaunchScreen.storyboard in Resources */,
 				2DA634FB24EA699500273CA9 /* Shake.vsh in Resources */,
+				2D691CC624EC1094009FBB13 /* biankuang.png in Resources */,
 				2D79618524E8EE18001087DE /* TrigngularMosaic.fsh in Resources */,
+				2D691CCC24EC16DF009FBB13 /* gaosi1.jpg in Resources */,
 				2D0372E724E584E500921DD4 /* SplitScreen_3.fsh in Resources */,
 				2DA6350224EA7DAF00273CA9 /* TurnWhite.fsh in Resources */,
 				2DA634F624EA2F0F00273CA9 /* SoulOut.vsh in Resources */,
 				2DBC8DB924E7ECF5001DB4BE /* Gray.vsh in Resources */,
 				2D0372EA24E5944C00921DD4 /* SplitScreen_4.vsh in Resources */,
+				2D691CCE24EC1730009FBB13 /* maoboli.png in Resources */,
 				2DBC8DBE24E7F1A4001DB4BE /* Down.vsh in Resources */,
 				2D3B7AA824DE3E5100FFE5BE /* Assets.xcassets in Resources */,
 				2D0372EC24E5945900921DD4 /* SplitScreen_4.fsh in Resources */,
+				2D691CCA24EC14DB009FBB13 /* gaosi.jpg in Resources */,
 				2D0372E224E5829B00921DD4 /* SplitScreen_2.fsh in Resources */,
 				2DA6350924EA854900273CA9 /* Glitch.fsh in Resources */,
 				2DBC8DBB24E7ED05001DB4BE /* Gray.fsh in Resources */,
@@ -492,6 +511,7 @@
 				2D79618024E8CCFE001087DE /* HexagonMosaic.fsh in Resources */,
 				2DBC8DC024E7F1B4001DB4BE /* Down.fsh in Resources */,
 				2D79618324E8EE0A001087DE /* TrigngularMosaic.vsh in Resources */,
+				2D691CC824EC1440009FBB13 /* colors.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
