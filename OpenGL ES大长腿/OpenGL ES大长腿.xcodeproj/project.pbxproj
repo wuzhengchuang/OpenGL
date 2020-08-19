@@ -17,6 +17,8 @@
 		2DA6353824EBC7BA00273CA9 /* OpenGL_ES___Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6353724EBC7BA00273CA9 /* OpenGL_ES___Tests.m */; };
 		2DA6354324EBC7BA00273CA9 /* OpenGL_ES___UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6354224EBC7BA00273CA9 /* OpenGL_ES___UITests.m */; };
 		2DA6355224EBC7E200273CA9 /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6355124EBC7E200273CA9 /* EAGLView.m */; };
+		2DC0F29F24ECF6ED00D631DD /* Normal.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DC0F29E24ECF6ED00D631DD /* Normal.vsh */; };
+		2DC0F2A124ECF6F900D631DD /* Normal.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DC0F2A024ECF6F900D631DD /* Normal.fsh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		2DA6354424EBC7BA00273CA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DA6355024EBC7E200273CA9 /* EAGLView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
 		2DA6355124EBC7E200273CA9 /* EAGLView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EAGLView.m; sourceTree = "<group>"; };
+		2DC0F29E24ECF6ED00D631DD /* Normal.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Normal.vsh; sourceTree = "<group>"; };
+		2DC0F2A024ECF6F900D631DD /* Normal.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Normal.fsh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,7 @@
 		2DA6351A24EBC7B700273CA9 /* OpenGL ES大长腿 */ = {
 			isa = PBXGroup;
 			children = (
+				2DC0F29C24ECF6C800D631DD /* Filter */,
 				2DA6351B24EBC7B700273CA9 /* AppDelegate.h */,
 				2DA6351C24EBC7B700273CA9 /* AppDelegate.m */,
 				2DA6351E24EBC7B700273CA9 /* SceneDelegate.h */,
@@ -140,6 +145,23 @@
 				2DA6354424EBC7BA00273CA9 /* Info.plist */,
 			);
 			path = "OpenGL ES大长腿UITests";
+			sourceTree = "<group>";
+		};
+		2DC0F29C24ECF6C800D631DD /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				2DC0F29D24ECF6D700D631DD /* Normal */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		2DC0F29D24ECF6D700D631DD /* Normal */ = {
+			isa = PBXGroup;
+			children = (
+				2DC0F29E24ECF6ED00D631DD /* Normal.vsh */,
+				2DC0F2A024ECF6F900D631DD /* Normal.fsh */,
+			);
+			path = Normal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,8 +267,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DC0F2A124ECF6F900D631DD /* Normal.fsh in Resources */,
 				2DA6352B24EBC7BA00273CA9 /* LaunchScreen.storyboard in Resources */,
 				2DA6352824EBC7BA00273CA9 /* Assets.xcassets in Resources */,
+				2DC0F29F24ECF6ED00D631DD /* Normal.vsh in Resources */,
 				2DA6352624EBC7B700273CA9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
