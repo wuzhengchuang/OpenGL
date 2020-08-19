@@ -19,6 +19,8 @@
 		2DA6355224EBC7E200273CA9 /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6355124EBC7E200273CA9 /* EAGLView.m */; };
 		2DC0F29F24ECF6ED00D631DD /* Normal.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DC0F29E24ECF6ED00D631DD /* Normal.vsh */; };
 		2DC0F2A124ECF6F900D631DD /* Normal.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DC0F2A024ECF6F900D631DD /* Normal.fsh */; };
+		2DC0F2A424ED007000D631DD /* biankuang.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC0F2A224ED007000D631DD /* biankuang.png */; };
+		2DC0F2A524ED007000D631DD /* timg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2DC0F2A324ED007000D631DD /* timg.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		2DA6355124EBC7E200273CA9 /* EAGLView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EAGLView.m; sourceTree = "<group>"; };
 		2DC0F29E24ECF6ED00D631DD /* Normal.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Normal.vsh; sourceTree = "<group>"; };
 		2DC0F2A024ECF6F900D631DD /* Normal.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Normal.fsh; sourceTree = "<group>"; };
+		2DC0F2A224ED007000D631DD /* biankuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = biankuang.png; path = "../../../OpenGL ES 滤镜1/OpenGL ES 滤镜1/biankuang.png"; sourceTree = "<group>"; };
+		2DC0F2A324ED007000D631DD /* timg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = timg.jpeg; path = "../../../OpenGL ES 纹理与颜色混合/OpenGL ES 索引绘图/timg.jpeg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +154,8 @@
 		2DC0F29C24ECF6C800D631DD /* Filter */ = {
 			isa = PBXGroup;
 			children = (
+				2DC0F2A224ED007000D631DD /* biankuang.png */,
+				2DC0F2A324ED007000D631DD /* timg.jpeg */,
 				2DC0F29D24ECF6D700D631DD /* Normal */,
 			);
 			path = Filter;
@@ -268,9 +274,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DC0F2A124ECF6F900D631DD /* Normal.fsh in Resources */,
+				2DC0F2A524ED007000D631DD /* timg.jpeg in Resources */,
 				2DA6352B24EBC7BA00273CA9 /* LaunchScreen.storyboard in Resources */,
 				2DA6352824EBC7BA00273CA9 /* Assets.xcassets in Resources */,
 				2DC0F29F24ECF6ED00D631DD /* Normal.vsh in Resources */,
+				2DC0F2A424ED007000D631DD /* biankuang.png in Resources */,
 				2DA6352624EBC7B700273CA9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

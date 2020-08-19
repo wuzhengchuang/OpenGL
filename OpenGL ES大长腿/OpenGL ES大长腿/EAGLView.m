@@ -10,6 +10,10 @@
 #import <OpenGLES/ES2/gl.h>
 #import <OpenGLES/ES2/glext.h>
 #import <GLKit/GLKit.h>
+typedef struct {
+    GLKVector3 position;//顶点数据
+    GLKVector2 textureCoord;//纹理
+}GLVertex;
 @interface EAGLView ()
 @property(nonatomic,strong)CAEAGLLayer *eagLayer;
 @property(nonatomic,strong)EAGLContext *eaglContext;
@@ -18,10 +22,7 @@
 @property(nonatomic,assign)GLuint vertBuffer;
 @property(nonatomic,assign)GLuint program;
 @end
-typedef struct {
-    GLKVector3 position;//顶点数据
-    GLKVector2 textureCoord;//纹理
-}GLVertex;
+
 @implementation EAGLView
 -(void)layoutSubviews{
     [self setUpLayer];
@@ -35,21 +36,23 @@ typedef struct {
     return [CAEAGLLayer class];
 }
 -(void)render{
-    glClearColor(1.0, 0.0, 0.0, 1.0);
+    glClearColor(1.0, 1.0, 1.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     CGFloat scale = [[UIScreen mainScreen]scale];
     CGRect rect = self.frame;
     glViewport(0, 0, rect.size.width * scale, rect.size.height * scale);
+    
+    CGFloat aspect = 1.0;
     GLVertex verts[]={
-        {{-1.f,1.f,0.0f,},{0.f,1.f,}},
-        {{-1.f,-1.f,0.0f,},{0.f,0.f,}},
-        {{1.f,1.f,0.0f,},{1.f,1.f,}},
-        {{1.f,-1.f,0.0f,},{1.f,0.f,}},
+        {{-aspect,aspect,0.0f,},{0.f,1.f,}},
+        {{-aspect,-aspect,0.0f,},{0.f,0.f,}},
+        {{aspect,aspect,0.0f,},{1.f,1.f,}},
+        {{aspect,-aspect,0.0f,},{1.f,0.f,}},
     };
     GLuint vertBuffer;
     glGenBuffers(1, &vertBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, vertBuffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(GLVertex), &vertBuffer, GL_DYNAMIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(verts), verts, GL_DYNAMIC_DRAW);
     self.vertBuffer=vertBuffer;
     
     self.program = [self loadShaders:@"Normal"];
@@ -61,13 +64,21 @@ typedef struct {
     
     GLuint textureCoord = glGetAttribLocation(self.program, "textureCoord");
     glEnableVertexAttribArray(textureCoord);
-    glVertexAttribPointer(position, 2, GL_FLOAT, GL_FALSE, sizeof(GLVertex), NULL+offsetof(GLVertex, textureCoord));
+    glVertexAttribPointer(textureCoord, 2, GL_FLOAT, GL_FALSE, sizeof(GLVertex), NULL+offsetof(GLVertex, textureCoord));
     glUniform1i(self.program, position);
     
-    [self setUpTexture:@""];
+    [self setUpTexture:@"timg.jpeg"];
     GLuint colorMap = glGetUniformLocation(self.program, "colorMap");
     glUniform1i(self.program, colorMap);
+    glEnable(GL_DEPTH_TEST);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     [self.eaglContext presentRenderbuffer:GL_RENDERBUFFER];
+}
+-(float)imageAspect:(NSString *)imageName{
+    CGImageRef spriteImage = [UIImage imageNamed:imageName].CGImage;
+    float width = (float)CGImageGetWidth(spriteImage);
+    float height = (float)CGImageGetHeight(spriteImage);
+    return width/height;
 }
 -(GLuint)setUpTexture:(NSString *)imageName{
     CGImageRef spriteImage = [UIImage imageNamed:imageName].CGImage;
