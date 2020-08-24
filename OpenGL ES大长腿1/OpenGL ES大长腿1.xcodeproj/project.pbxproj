@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D8F774724F3E28200DF6A0A /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2D8F774524F3E28200DF6A0A /* 2.jpg */; };
+		2D8F774824F3E28200DF6A0A /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2D8F774624F3E28200DF6A0A /* 1.jpg */; };
+		2D8F774B24F3EB4D00DF6A0A /* GLProgramHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8F774A24F3EB4D00DF6A0A /* GLProgramHelper.m */; };
+		2D8F774E24F404BD00DF6A0A /* GLSLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8F774D24F404BD00DF6A0A /* GLSLView.m */; };
 		2DC0F36524F3BFEA00D631DD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC0F36424F3BFEA00D631DD /* AppDelegate.m */; };
 		2DC0F36824F3BFEA00D631DD /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC0F36724F3BFEA00D631DD /* SceneDelegate.m */; };
 		2DC0F36B24F3BFEA00D631DD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC0F36A24F3BFEA00D631DD /* ViewController.m */; };
@@ -38,6 +42,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D8F774524F3E28200DF6A0A /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
+		2D8F774624F3E28200DF6A0A /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		2D8F774924F3EB4D00DF6A0A /* GLProgramHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLProgramHelper.h; sourceTree = "<group>"; };
+		2D8F774A24F3EB4D00DF6A0A /* GLProgramHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLProgramHelper.m; sourceTree = "<group>"; };
+		2D8F774C24F404BD00DF6A0A /* GLSLView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLSLView.h; sourceTree = "<group>"; };
+		2D8F774D24F404BD00DF6A0A /* GLSLView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLSLView.m; sourceTree = "<group>"; };
 		2DC0F36024F3BFEA00D631DD /* OpenGL ES大长腿1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OpenGL ES大长腿1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DC0F36324F3BFEA00D631DD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2DC0F36424F3BFEA00D631DD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -111,12 +121,18 @@
 		2DC0F36224F3BFEA00D631DD /* OpenGL ES大长腿1 */ = {
 			isa = PBXGroup;
 			children = (
+				2D8F774624F3E28200DF6A0A /* 1.jpg */,
+				2D8F774524F3E28200DF6A0A /* 2.jpg */,
 				2DC0F36324F3BFEA00D631DD /* AppDelegate.h */,
 				2DC0F36424F3BFEA00D631DD /* AppDelegate.m */,
 				2DC0F36624F3BFEA00D631DD /* SceneDelegate.h */,
 				2DC0F36724F3BFEA00D631DD /* SceneDelegate.m */,
 				2DC0F36924F3BFEA00D631DD /* ViewController.h */,
 				2DC0F36A24F3BFEA00D631DD /* ViewController.m */,
+				2D8F774C24F404BD00DF6A0A /* GLSLView.h */,
+				2D8F774D24F404BD00DF6A0A /* GLSLView.m */,
+				2D8F774924F3EB4D00DF6A0A /* GLProgramHelper.h */,
+				2D8F774A24F3EB4D00DF6A0A /* GLProgramHelper.m */,
 				2DC0F36C24F3BFEA00D631DD /* Main.storyboard */,
 				2DC0F36F24F3BFEB00D631DD /* Assets.xcassets */,
 				2DC0F37124F3BFEB00D631DD /* LaunchScreen.storyboard */,
@@ -258,7 +274,9 @@
 			files = (
 				2DC0F37324F3BFEB00D631DD /* LaunchScreen.storyboard in Resources */,
 				2DC0F37024F3BFEB00D631DD /* Assets.xcassets in Resources */,
+				2D8F774724F3E28200DF6A0A /* 2.jpg in Resources */,
 				2DC0F36E24F3BFEA00D631DD /* Main.storyboard in Resources */,
+				2D8F774824F3E28200DF6A0A /* 1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,7 +301,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D8F774E24F404BD00DF6A0A /* GLSLView.m in Sources */,
 				2DC0F36B24F3BFEA00D631DD /* ViewController.m in Sources */,
+				2D8F774B24F3EB4D00DF6A0A /* GLProgramHelper.m in Sources */,
 				2DC0F36524F3BFEA00D631DD /* AppDelegate.m in Sources */,
 				2DC0F37624F3BFEB00D631DD /* main.m in Sources */,
 				2DC0F36824F3BFEA00D631DD /* SceneDelegate.m in Sources */,
