@@ -7,81 +7,64 @@
 //
 
 #import "ViewController.h"
-#import <GLKit/GLKit.h>
-#import <OpenGLES/ES2/gl.h>
-#import <OpenGLES/ES2/glext.h>
-typedef struct {
-    GLKVector3 positionCoord;
-    GLKVector2 textureCoord;
-}GLVertex;
-@interface ViewController ()<GLKViewDelegate>
-@property (weak, nonatomic) IBOutlet GLKView *glkView;
-@property (nonatomic, strong) EAGLContext *context;
-@property (nonatomic, strong) GLKBaseEffect *effect;
-@property (nonatomic, assign) GLVertex *vertexs;
-@property (nonatomic, assign) GLuint dataBuffer;
+#import "LongLegView.h"
+@interface ViewController ()
+@property (weak, nonatomic) IBOutlet LongLegView *springView;
+@property (weak, nonatomic) IBOutlet UIView *topLine;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomLineSpace;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topLineSpace;
+@property (weak, nonatomic) IBOutlet UIView *mask;
+@property (weak, nonatomic) IBOutlet UIView *bottomLine;
+@property (weak, nonatomic) IBOutlet UIButton *topButton;
+@property (weak, nonatomic) IBOutlet UIButton *bottomButton;
+@property (weak, nonatomic) IBOutlet UIButton *saveButton;
+@property (weak, nonatomic) IBOutlet UISlider *slider;
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initUI];
-    [self initData];
-    [self initTexture];
+    [self setUpButtons];
+    [self.springView updateImage:[UIImage imageNamed:@"1.jpg"]];
 }
--(void)initUI{
-    self.context = [[EAGLContext alloc]initWithAPI:kEAGLRenderingAPIOpenGLES2];
-    if (!self.context) {
-        NSLog(@"EAGLContext创建失败!");
-        return;
-    }
-    if (![EAGLContext setCurrentContext:self.context]) {
-        NSLog(@"设置EAGLContext失败!");
-        return;
-    }
-    self.glkView.delegate=self;
-    self.glkView.context=self.context;
-    self.glkView.drawableColorFormat=GLKViewDrawableColorFormatRGBA8888;
-    self.glkView.drawableDepthFormat=GLKViewDrawableDepthFormat24;
-    self.glkView.drawableStencilFormat=GLKViewDrawableStencilFormat8;
+#pragma mark - Private
+- (void)setUpButtons{
+    self.topButton.layer.cornerRadius = 15.f;
+    self.topButton.layer.borderWidth = 1.f;
+    self.topButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+    [self.topButton addGestureRecognizer:[[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(actionPanTop:)]];
+    self.bottomButton.layer.cornerRadius = 15.f;
+    self.bottomButton.layer.borderWidth = 1.f;
+    self.bottomButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+    [self.bottomButton addGestureRecognizer:[[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(actionPanBottom:)]];
 }
--(void)initData{
-    self.vertexs=(GLVertex *)malloc(sizeof(GLVertex)*4);
-    self.vertexs[0].positionCoord=GLKVector3Make(-1.f, 1.f, 0.f);
-    self.vertexs[0].textureCoord=GLKVector2Make(0.f, 1.f);
-    self.vertexs[1].positionCoord=GLKVector3Make(1.f, 1.f, 0.f);
-    self.vertexs[1].textureCoord=GLKVector2Make(1.f, 1.f);
-    self.vertexs[2].positionCoord=GLKVector3Make(1.f, -1.f, 0.f);
-    self.vertexs[2].textureCoord=GLKVector2Make(1.f, 0.f);
-    self.vertexs[3].positionCoord=GLKVector3Make(-1.f, -1.f, 0.f);
-    self.vertexs[3].textureCoord=GLKVector2Make(0.f, 0.f);
-    glGenBuffers(1, &_dataBuffer);
-    glBindBuffer(GL_ARRAY_BUFFER, self.dataBuffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(GLVertex)*4, self.vertexs, GL_STATIC_DRAW);
-    glEnableVertexAttribArray(GLKVertexAttribPosition);
-    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, sizeof(GLVertex),NULL+offsetof(GLVertex, positionCoord));
-    glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
-    glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, sizeof(GLVertex),NULL+offsetof(GLVertex, textureCoord));
+-(void)setViewsHidden:(BOOL)isHidden{
+    self.topLine.hidden=isHidden;
+    self.topButton.hidden=isHidden;
+    self.mask.hidden=isHidden;
+    self.bottomLine.hidden=isHidden;
+    self.bottomButton.hidden=isHidden;
 }
--(void)initTexture{
-    NSString *filePath = [[NSBundle mainBundle]pathForResource:@"1" ofType:@"jpg"];
-    GLKTextureInfo *textureInfo =[GLKTextureLoader textureWithContentsOfFile:filePath options:@{GLKTextureLoaderOriginBottomLeft:@(1)} error:NULL];
-    self.effect=[[GLKBaseEffect alloc]init];
-    self.effect.texture2d0.enabled=GL_TRUE;
-    self.effect.texture2d0.name=textureInfo.name;
+#pragma mark - action
+-(void)actionPanTop:(UIPanGestureRecognizer *)pan{
+    
 }
-- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect{
-    glClearColor(1.f, 0.f, 0.f, 1.f);
-    glClear(GL_COLOR_BUFFER_BIT);
-    glBindBuffer(GL_ARRAY_BUFFER, self.dataBuffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(GLVertex)*4, self.vertexs, GL_STATIC_DRAW);
-    [self.effect prepareToDraw];
-    glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+-(void)actionPanBottom:(UIPanGestureRecognizer *)pan{
+    
 }
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-//    self.vertexs[0].positionCoord
-  self.vertexs[0].positionCoord =  GLKVector3MultiplyScalar(self.vertexs[0].positionCoord, 0.5);
-    [self.glkView display];
+#pragma mark - IBAction
+
+- (IBAction)sliderValueDidChanged:(UISlider *)sender {
+}
+- (IBAction)sliderDidTouchDown:(id)sender {
+    [self setViewsHidden:YES];
+}
+
+- (IBAction)sliderDidTouchUp:(id)sender {
+    [self setViewsHidden:NO];
+}
+- (IBAction)saveAction:(id)sender {
 }
 @end

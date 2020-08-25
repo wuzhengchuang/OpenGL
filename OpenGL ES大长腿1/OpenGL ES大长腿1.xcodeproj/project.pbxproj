@@ -22,6 +22,10 @@
 		2DC0F38B24F3BFEB00D631DD /* OpenGL_ES___1UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC0F38A24F3BFEB00D631DD /* OpenGL_ES___1UITests.m */; };
 		2DC0F39A24F3C0AA00D631DD /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC0F39924F3C0AA00D631DD /* GLKit.framework */; };
 		2DC0F39C24F3C0BB00D631DD /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC0F39B24F3C0BB00D631DD /* OpenGLES.framework */; };
+		2DC0F3B424F4E3BD00D631DD /* Normal.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DC0F3B324F4E3BD00D631DD /* Normal.vsh */; };
+		2DC0F3B624F4E3CA00D631DD /* Normal.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2DC0F3B524F4E3CA00D631DD /* Normal.fsh */; };
+		2DC0F3B924F4F4F500D631DD /* LongLegView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC0F3B824F4F4F500D631DD /* LongLegView.m */; };
+		2DC0F3BC24F50B8B00D631DD /* LongLegVertexAttriArrayBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC0F3BB24F50B8B00D631DD /* LongLegVertexAttriArrayBuffer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +72,13 @@
 		2DC0F38C24F3BFEB00D631DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DC0F39924F3C0AA00D631DD /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		2DC0F39B24F3C0BB00D631DD /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		2DC0F3B024F4E21E00D631DD /* GLSLTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLSLTypes.h; sourceTree = "<group>"; };
+		2DC0F3B324F4E3BD00D631DD /* Normal.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Normal.vsh; sourceTree = "<group>"; };
+		2DC0F3B524F4E3CA00D631DD /* Normal.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Normal.fsh; sourceTree = "<group>"; };
+		2DC0F3B724F4F4F500D631DD /* LongLegView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LongLegView.h; sourceTree = "<group>"; };
+		2DC0F3B824F4F4F500D631DD /* LongLegView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LongLegView.m; sourceTree = "<group>"; };
+		2DC0F3BA24F50B8B00D631DD /* LongLegVertexAttriArrayBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LongLegVertexAttriArrayBuffer.h; sourceTree = "<group>"; };
+		2DC0F3BB24F50B8B00D631DD /* LongLegVertexAttriArrayBuffer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LongLegVertexAttriArrayBuffer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +132,7 @@
 		2DC0F36224F3BFEA00D631DD /* OpenGL ES大长腿1 */ = {
 			isa = PBXGroup;
 			children = (
+				2DC0F3B124F4E39900D631DD /* Filter */,
 				2D8F774624F3E28200DF6A0A /* 1.jpg */,
 				2D8F774524F3E28200DF6A0A /* 2.jpg */,
 				2DC0F36324F3BFEA00D631DD /* AppDelegate.h */,
@@ -131,8 +143,13 @@
 				2DC0F36A24F3BFEA00D631DD /* ViewController.m */,
 				2D8F774C24F404BD00DF6A0A /* GLSLView.h */,
 				2D8F774D24F404BD00DF6A0A /* GLSLView.m */,
+				2DC0F3B024F4E21E00D631DD /* GLSLTypes.h */,
 				2D8F774924F3EB4D00DF6A0A /* GLProgramHelper.h */,
 				2D8F774A24F3EB4D00DF6A0A /* GLProgramHelper.m */,
+				2DC0F3B724F4F4F500D631DD /* LongLegView.h */,
+				2DC0F3B824F4F4F500D631DD /* LongLegView.m */,
+				2DC0F3BA24F50B8B00D631DD /* LongLegVertexAttriArrayBuffer.h */,
+				2DC0F3BB24F50B8B00D631DD /* LongLegVertexAttriArrayBuffer.m */,
 				2DC0F36C24F3BFEA00D631DD /* Main.storyboard */,
 				2DC0F36F24F3BFEB00D631DD /* Assets.xcassets */,
 				2DC0F37124F3BFEB00D631DD /* LaunchScreen.storyboard */,
@@ -167,6 +184,23 @@
 				2DC0F39924F3C0AA00D631DD /* GLKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2DC0F3B124F4E39900D631DD /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				2DC0F3B224F4E3A600D631DD /* Normal */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		2DC0F3B224F4E3A600D631DD /* Normal */ = {
+			isa = PBXGroup;
+			children = (
+				2DC0F3B324F4E3BD00D631DD /* Normal.vsh */,
+				2DC0F3B524F4E3CA00D631DD /* Normal.fsh */,
+			);
+			path = Normal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,7 +308,9 @@
 			files = (
 				2DC0F37324F3BFEB00D631DD /* LaunchScreen.storyboard in Resources */,
 				2DC0F37024F3BFEB00D631DD /* Assets.xcassets in Resources */,
+				2DC0F3B424F4E3BD00D631DD /* Normal.vsh in Resources */,
 				2D8F774724F3E28200DF6A0A /* 2.jpg in Resources */,
+				2DC0F3B624F4E3CA00D631DD /* Normal.fsh in Resources */,
 				2DC0F36E24F3BFEA00D631DD /* Main.storyboard in Resources */,
 				2D8F774824F3E28200DF6A0A /* 1.jpg in Resources */,
 			);
@@ -303,8 +339,10 @@
 			files = (
 				2D8F774E24F404BD00DF6A0A /* GLSLView.m in Sources */,
 				2DC0F36B24F3BFEA00D631DD /* ViewController.m in Sources */,
+				2DC0F3B924F4F4F500D631DD /* LongLegView.m in Sources */,
 				2D8F774B24F3EB4D00DF6A0A /* GLProgramHelper.m in Sources */,
 				2DC0F36524F3BFEA00D631DD /* AppDelegate.m in Sources */,
+				2DC0F3BC24F50B8B00D631DD /* LongLegVertexAttriArrayBuffer.m in Sources */,
 				2DC0F37624F3BFEB00D631DD /* main.m in Sources */,
 				2DC0F36824F3BFEA00D631DD /* SceneDelegate.m in Sources */,
 			);

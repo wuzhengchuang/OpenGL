@@ -33,8 +33,8 @@ typedef struct {
     [self setUpRenderBuffer];
     [self setUpFrameBuffer];
     [self render];
-    displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(timeClick)];
-    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+//    displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(timeClick)];
+//    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
 }
 float startTimeInterval=0.0;
 -(void)timeClick{
@@ -60,42 +60,42 @@ float startTimeInterval=0.0;
     CGFloat scale = [[UIScreen mainScreen]scale];
     CGRect rect = self.frame;
     glViewport(rect.origin.x*scale, rect.origin.y*scale, rect.size.width*scale, rect.size.height*scale);
-    NSString *vertPath = [[NSBundle mainBundle]pathForResource:@"Shaders" ofType:@"vsh"];
-    NSString *fragPath = [[NSBundle mainBundle]pathForResource:@"Shaderf" ofType:@"fsh"];
-    self.program = [self loadShaders:vertPath frag:fragPath];
-    
-    ScnceVertex verts[]={
-        {{-1.f,1.f,0.0f,},{0.f,1.f,}},
-        {{-1.f,-1.f,0.0f,},{0.f,0.f,}},
-        {{1.f,1.f,0.0f,},{1.f,1.f,}},
-        {{1.f,-1.f,0.0f,},{1.f,0.f,}},
-    };
-    GLuint buffer;
-    glGenBuffers(1, &buffer);
-    glBindBuffer(GL_ARRAY_BUFFER, buffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(verts), verts, GL_DYNAMIC_DRAW);
-    self.vertBuffer=buffer;
-    
-    GLuint position = glGetAttribLocation(self.program, "position");
-    glEnableVertexAttribArray(position);
-    glVertexAttribPointer(position, 3, GL_FLOAT, GL_FALSE, sizeof(ScnceVertex), NULL + offsetof(ScnceVertex, position));
-    
-    GLuint textCoord = glGetAttribLocation(self.program, "textCoord");
-    glEnableVertexAttribArray(textCoord);
-    glVertexAttribPointer(textCoord, 2, GL_FLOAT, GL_FALSE, sizeof(ScnceVertex),NULL + offsetof(ScnceVertex, textureCoord));
-    
-    [self setUpTexture:@"timg.jpeg"];
-    GLuint bgTexture = glGetUniformLocation(self.program, "bgTexture");
-    glUniform1i(bgTexture, 0);
-    [self setUpTexture1:@"maoboli.png"];
-    GLuint biankuangTexture = glGetUniformLocation(self.program, "biankuangTexture");
-    glUniform1i(biankuangTexture, 1);
-    
-    GLuint TexSize = glGetUniformLocation(self.program, "TexSize");
-    CGSize size = [self getSizeImage:@"timg.jpeg"];
-    glUniform2f(TexSize, size.width, size.height);
-    glEnable(GL_DEPTH_TEST);
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+//    NSString *vertPath = [[NSBundle mainBundle]pathForResource:@"Shaders" ofType:@"vsh"];
+//    NSString *fragPath = [[NSBundle mainBundle]pathForResource:@"Shaderf" ofType:@"fsh"];
+//    self.program = [self loadShaders:vertPath frag:fragPath];
+//    
+//    ScnceVertex verts[]={
+//        {{-1.f,1.f,0.0f,},{0.f,1.f,}},
+//        {{-1.f,-1.f,0.0f,},{0.f,0.f,}},
+//        {{1.f,1.f,0.0f,},{1.f,1.f,}},
+//        {{1.f,-1.f,0.0f,},{1.f,0.f,}},
+//    };
+//    GLuint buffer;
+//    glGenBuffers(1, &buffer);
+//    glBindBuffer(GL_ARRAY_BUFFER, buffer);
+//    glBufferData(GL_ARRAY_BUFFER, sizeof(verts), verts, GL_DYNAMIC_DRAW);
+//    self.vertBuffer=buffer;
+//    
+//    GLuint position = glGetAttribLocation(self.program, "position");
+//    glEnableVertexAttribArray(position);
+//    glVertexAttribPointer(position, 3, GL_FLOAT, GL_FALSE, sizeof(ScnceVertex), NULL + offsetof(ScnceVertex, position));
+//    
+//    GLuint textCoord = glGetAttribLocation(self.program, "textCoord");
+//    glEnableVertexAttribArray(textCoord);
+//    glVertexAttribPointer(textCoord, 2, GL_FLOAT, GL_FALSE, sizeof(ScnceVertex),NULL + offsetof(ScnceVertex, textureCoord));
+//    
+//    [self setUpTexture:@"timg.jpeg"];
+//    GLuint bgTexture = glGetUniformLocation(self.program, "bgTexture");
+//    glUniform1i(bgTexture, 0);
+//    [self setUpTexture1:@"maoboli.png"];
+//    GLuint biankuangTexture = glGetUniformLocation(self.program, "biankuangTexture");
+//    glUniform1i(biankuangTexture, 1);
+//    
+//    GLuint TexSize = glGetUniformLocation(self.program, "TexSize");
+//    CGSize size = [self getSizeImage:@"timg.jpeg"];
+//    glUniform2f(TexSize, size.width, size.height);
+//    glEnable(GL_DEPTH_TEST);
+//    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     [self.eaglContext presentRenderbuffer:GL_RENDERBUFFER];
 }
 -(CGSize)getSizeImage:(NSString *)imageName{
