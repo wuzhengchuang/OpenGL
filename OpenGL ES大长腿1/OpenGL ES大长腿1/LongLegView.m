@@ -19,6 +19,9 @@ static NSInteger const kVerticesCount = 8;
 @property(nonatomic,strong)GLKBaseEffect *baseEffect;
 @property(nonatomic,assign)GLVertex *vertices;
 @property(nonatomic,strong)LongLegVertexAttriArrayBuffer *vertexAttribArrayBuffer;
+@property (nonatomic, assign)CGFloat currentTextureStartY;
+@property (nonatomic, assign)CGFloat currentTextureEndY;
+@property (nonatomic, assign)CGFloat currentNewHeight;
 @end
 
 @implementation LongLegView
@@ -49,6 +52,8 @@ static NSInteger const kVerticesCount = 8;
     CGFloat textureHeiht = MIN(ratio, kDefaultOriginTextureHeight);
     self.currentTextureWidth = textureHeiht/ratio;
     [self calculateOriginTextureCoordWithTextureSize:self.currentImageSize startY:0 endY:0 newHeight:0];
+    [self.vertexAttribArrayBuffer updateAttribStride:sizeof(GLVertex) numberOfVertices:kVerticesCount data:_vertices usage:GL_DYNAMIC_DRAW];
+    [self display];
 }
 #pragma mark - Private
 - (void)commonInit{
@@ -92,10 +97,56 @@ static NSInteger const kVerticesCount = 8;
     GLKVector3 pointLB = GLKVector3Make(-textureWidth, -(textureHeight+delta), 0);
     //右下角
     GLKVector3 pointRB = GLKVector3Make(textureWidth, -(textureHeight+delta), 0);
-    //
+    //中间矩形区域的顶点
+    //0.7 - 2*0.7*0.25
+    GLfloat tempStartYCoord = textureHeight*(1 - 2 * startY);
+    GLfloat tempEndYCoord = textureHeight*(1 - 2 * endY);
+    CGFloat startYCoord = MIN(tempStartYCoord, textureHeight);
+    CGFloat endYCoord = MIN(tempEndYCoord, textureHeight);
+    GLKVector3 centerPointLT = GLKVector3Make(-textureWidth, startYCoord+delta, 0);
+    GLKVector3 centerPointRT = GLKVector3Make(textureWidth, startYCoord+delta, 0);
+    GLKVector3 centerPointLB = GLKVector3Make(-textureWidth, endYCoord-delta, 0);
+    GLKVector3 centerPointRB = GLKVector3Make(textureWidth, endYCoord-delta, 0);
+    self.vertices[0].positionCoord = pointRT;
+    self.vertices[0].textureCoord = GLKVector2Make(1, 1);
+    
+    self.vertices[1].positionCoord = pointLT;
+    self.vertices[1].textureCoord = GLKVector2Make(0, 1);
+    
+    self.vertices[2].positionCoord = centerPointRT;
+    self.vertices[2].textureCoord = GLKVector2Make(1, 1-startY);
+    
+    self.vertices[3].positionCoord = centerPointLT;
+    self.vertices[3].textureCoord = GLKVector2Make(0, 1-startY);
+    
+    self.vertices[4].positionCoord = centerPointRB;
+    self.vertices[4].textureCoord = GLKVector2Make(1, 1-endY);
+    
+    self.vertices[5].positionCoord = centerPointLB;
+    self.vertices[5].textureCoord = GLKVector2Make(0, 1-endY);
+    
+    self.vertices[6].positionCoord = pointRB;
+    self.vertices[6].textureCoord = GLKVector2Make(1, 0);
+    
+    self.vertices[7].positionCoord = pointLB;
+    self.vertices[7].textureCoord = GLKVector2Make(0, 0);
+    
+    self.currentTextureStartY = startY;
+    self.currentTextureEndY = endY;
+    self.currentNewHeight = newHeight;
 }
 #pragma mark - GLKViewDelegate
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect{
+    glClearColor(1.f, 1.f, 1.f, 1.f);
+    glClear(GL_COLOR_BUFFER_BIT);
+    [self.baseEffect prepareToDraw];
+    glEnableVertexAttribArray(GLKVertexAttribPosition);
+    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, sizeof(GLVertex), NULL+offsetof(GLVertex, positionCoord));
+    
+    glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
+    glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, sizeof(GLVertex), NULL+offsetof(GLVertex, textureCoord));
+    
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, kVerticesCount);
     
 }
 @end

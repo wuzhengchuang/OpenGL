@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpButtons];
-    [self.springView updateImage:[UIImage imageNamed:@"1.jpg"]];
+    [self.springView updateImage:[UIImage imageNamed:@"2.jpg"]];
 }
 #pragma mark - Private
 - (void)setUpButtons{
