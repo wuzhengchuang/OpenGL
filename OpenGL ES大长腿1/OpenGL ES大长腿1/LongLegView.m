@@ -22,6 +22,7 @@ static NSInteger const kVerticesCount = 8;
 @property (nonatomic, assign)CGFloat currentTextureStartY;
 @property (nonatomic, assign)CGFloat currentTextureEndY;
 @property (nonatomic, assign)CGFloat currentNewHeight;
+@property (nonatomic, assign)BOOL hasChange;
 @end
 
 @implementation LongLegView
@@ -42,6 +43,7 @@ static NSInteger const kVerticesCount = 8;
 }
 #pragma mark - Public
 - (void)updateImage:(UIImage *)image{
+    self.hasChange=YES;
     GLKTextureInfo *textureInfo = [GLKTextureLoader textureWithCGImage:image.CGImage options:@{GLKTextureLoaderOriginBottomLeft:@(1)} error:nil];
     self.baseEffect = [[GLKBaseEffect alloc]init];
     self.baseEffect.texture2d0.enabled=YES;
@@ -54,6 +56,29 @@ static NSInteger const kVerticesCount = 8;
     [self calculateOriginTextureCoordWithTextureSize:self.currentImageSize startY:0 endY:0 newHeight:0];
     [self.vertexAttribArrayBuffer updateAttribStride:sizeof(GLVertex) numberOfVertices:kVerticesCount data:_vertices usage:GL_DYNAMIC_DRAW];
     [self display];
+}
+- (void)updateTexture{
+    
+}
+/**
+ 将区域拉伸或压缩为某个高度
+ @param startY 开始的纵坐标位置（相对于纹理）
+ @param endY 结束的纵坐标位置（相对于纹理）
+ @param newHeight 新的中间区域高度（相对于纹理）
+ */
+- (void)stretchingFromStartY:(CGFloat)startY
+                      toEndY:(CGFloat)endY
+               withNewHeight:(CGFloat)newHeight {
+    
+    self.hasChange = YES;
+    [self calculateOriginTextureCoordWithTextureSize:self.currentImageSize startY:startY endY:endY newHeight:newHeight];
+    [self.vertexAttribArrayBuffer updateAttribStride:sizeof(GLVertex) numberOfVertices:kVerticesCount data:self.vertices usage:GL_STATIC_DRAW];
+    [self display];
+    if(self.springDelegate && [self.springDelegate respondsToSelector:@selector(springViewStretchAreaDidChanged:)])
+    {
+        [self.springDelegate springViewStretchAreaDidChanged:self];
+        
+    }
 }
 #pragma mark - Private
 - (void)commonInit{
@@ -148,5 +173,42 @@ static NSInteger const kVerticesCount = 8;
     
     glDrawArrays(GL_TRIANGLE_STRIP, 0, kVerticesCount);
     
+}
+#pragma mark-set/get方法
+// 纹理顶部的纵坐标 0～1
+- (CGFloat)textureTopY {
+    //(1-vertices[0].顶点坐标的Y值)/2
+    CGFloat textureTopYValue = (1 - self.vertices[0].positionCoord.y) / 2;
+    return textureTopYValue;
+}
+
+// 纹理底部的纵坐标 0～1
+- (CGFloat)textureBottomY {
+    //(1-vertices[7].顶点坐标的Y值)/2
+    CGFloat textureBottomYValue = (1 - self.vertices[7].positionCoord.y) / 2;
+    return textureBottomYValue;
+}
+
+// 可伸缩区域顶部的纵坐标 0～1
+- (CGFloat)stretchAreaTopY {
+    CGFloat stretchAreaTopYValue = (1 - self.vertices[2].positionCoord.y) / 2;
+    return stretchAreaTopYValue;
+}
+// 可伸缩区域底部的纵坐标 0～1
+- (CGFloat)stretchAreaBottomY {
+    CGFloat stretchAreaBottomYValue = (1 - self.vertices[5].positionCoord.y) / 2;
+    return stretchAreaBottomYValue;
+}
+// 纹理高度 0～1
+- (CGFloat)textureHeight {
+    CGFloat textureHeightValue = self.textureBottomY - self.textureTopY;
+    return textureHeightValue;
+}
+// 根据当前屏幕的尺寸，返回新的图片尺寸
+- (CGSize)newImageSize {
+    //新图片的尺寸 = 当前图片的高 * (当前图片高度 - (当前纹理EndY - 当前纹理Star))+1;
+    CGFloat newImageHeight = self.currentImageSize.height * ((self.currentNewHeight - (self.currentTextureEndY - self.currentTextureStartY)) + 1);
+    
+    return CGSizeMake(self.currentImageSize.width, newImageHeight);
 }
 @end
