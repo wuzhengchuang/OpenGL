@@ -251,7 +251,8 @@
 				ORGANIZATIONNAME = "Cell Phone";
 				TargetAttributes = {
 					BCF9D15514EAD24200986461 = {
-						DevelopmentTeam = 6N2KK62WZZ;
+						DevelopmentTeam = M8BT5E8SES;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -260,6 +261,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = BCF9D14B14EAD24200986461;
@@ -388,7 +390,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "../../../framework/**";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
@@ -420,7 +422,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "../../../framework/**";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
@@ -432,13 +434,15 @@
 		BCF9D16F14EAD24200986461 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = 6N2KK62WZZ;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = M8BT5E8SES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BenchmarkSuite/BenchmarkSuite-Prefix.pch";
 				INFOPLIST_FILE = "BenchmarkSuite/BenchmarkSuite-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				PRODUCT_BUNDLE_IDENTIFIER = CC.HelloCC.com;
+				PRODUCT_BUNDLE_IDENTIFIER = com.seca.zhibotv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = nucomDev;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -446,13 +450,15 @@
 		BCF9D17014EAD24200986461 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = 6N2KK62WZZ;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = M8BT5E8SES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BenchmarkSuite/BenchmarkSuite-Prefix.pch";
 				INFOPLIST_FILE = "BenchmarkSuite/BenchmarkSuite-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				PRODUCT_BUNDLE_IDENTIFIER = CC.HelloCC.com;
+				PRODUCT_BUNDLE_IDENTIFIER = com.seca.zhibotv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = nucomDev;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
